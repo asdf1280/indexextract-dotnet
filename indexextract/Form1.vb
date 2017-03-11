@@ -38,6 +38,8 @@
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         On Error GoTo b
+        Dim abcd As Integer
+        abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
 
         i = i + 1
         If korean Then
@@ -50,14 +52,15 @@
         hash = Split(TextBox1.Text, Chr(34))(a + 4)
         'MsgBox(hash & " " & file)
 
-        My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & file, True)
+        My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file, True)
         a = a + 8
         Exit Sub
 b:
         If korean Then
-            TextBox1.Text = "완료됨 indexextract\" & OpenFileDialog1.FileName & "\... 에 저장되었습니다."
+
+            TextBox1.Text = "완료됨 indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\... 에 저장되었습니다."
         Else
-            TextBox1.Text = "Finished : indexextract\" & OpenFileDialog1.FileName & "\..."
+            TextBox1.Text = "Finished : indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\..."
         End If
 
         Timer1.Enabled = False
