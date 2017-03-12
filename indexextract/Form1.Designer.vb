@@ -33,6 +33,9 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer4 = New System.Windows.Forms.Timer(Me.components)
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -117,11 +120,30 @@ Partial Class Form1
         Me.Timer2.Enabled = True
         Me.Timer2.Interval = 1
         '
+        'Timer3
+        '
+        Me.Timer3.Interval = 1
+        '
+        'Timer4
+        '
+        Me.Timer4.Interval = 1
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(12, 271)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(560, 76)
+        Me.Button5.TabIndex = 7
+        Me.Button5.Text = "Open"
+        Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 392)
+        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -146,4 +168,7 @@ Partial Class Form1
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Label2 As Label
     Friend WithEvents Timer2 As Timer
+    Friend WithEvents Timer3 As Timer
+    Friend WithEvents Timer4 As Timer
+    Friend WithEvents Button5 As Button
 End Class

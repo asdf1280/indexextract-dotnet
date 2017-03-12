@@ -1,5 +1,6 @@
 ﻿Public Class Form1
     Dim fullt As String
+    Dim abcd As Integer
     Public i As Integer
     Public a As Integer = 3
     Public hash As String
@@ -34,7 +35,7 @@
             If Split(OpenFileDialog1.FileName, "\")(abcd) = "legacy.json" Then
                 fullt = Split(fullt, Chr(34) & "virtual" & Chr(34) & ": true,")(1)
             End If
-
+            Button5.Visible = False
             b = UBound(Split(fullt, "hash"))
             Button1.Enabled = True
         End If
@@ -42,6 +43,7 @@
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Button2.Text = "Browse"
+        Button5.Text = "Open"
         Button1.Text = "Start"
         Label1.Text = "Status : ready"
         korean = False
@@ -50,13 +52,14 @@
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Button2.Text = "찾아보기"
         Button1.Text = "시작"
+        Button5.Text = "폴더 열기"
         Label1.Text = "현재 : 준비"
         korean = True
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         On Error GoTo b
-        Dim abcd As Integer
+
         abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
 
         i = i + 1
@@ -89,10 +92,11 @@
         Exit Sub
 b:
         If korean Then
-            TextBox1.Text = "완료됨 : 프로그램 폴더\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\... 에 저장되었습니다."
+            TextBox1.Text = "완료됨 : " & Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\... 에 저장되었습니다."
         Else
-            TextBox1.Text = "Finished : This EXE dir\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\..."
+            TextBox1.Text = "Finished : " & Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\..."
         End If
+        Button5.Visible = True
 
         Timer1.Enabled = False
         Button1.Enabled = False
@@ -131,5 +135,64 @@ b:
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
 
+    End Sub
+    Public modd As Boolean = True
+    Public modc As Boolean = False
+    Public dd As Short = Int(Rnd() * 5) + 1
+    Public ddd As Short = Int(Rnd() * 5) + 1
+    Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
+        '600 1500 431 1000
+        If modd Then
+            Me.Width = Me.Width + dd
+        Else
+            Me.Width = Me.Width - dd
+        End If
+        If modc Then
+            Me.Height = Me.Height + ddd
+        Else
+            Me.Height = Me.Height - ddd
+        End If
+        If Me.Width < 600 Then
+            dd = Int(Rnd() * 50) + 1
+            modd = True
+        ElseIf Me.Width > 1300 Then
+            dd = Int(Rnd() * 50) + 1
+            modd = False
+        End If
+        If Me.Height < 431 Then
+            ddd = Int(Rnd() * 50) + 1
+            modc = True
+        ElseIf Me.Height > 800 Then
+            ddd = Int(Rnd() * 50) + 1
+            modc = False
+        End If
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+        Timer3.Enabled = True
+    End Sub
+    Dim moa As Boolean
+
+    Private Sub Timer4_Tick(sender As Object, e As EventArgs) Handles Timer4.Tick
+
+
+        If moa Then
+            Me.Left = Me.Left + dimu
+            Me.Top = Me.Top + dimu
+            moa = False
+        Else
+            Me.Left = Me.Left - dimu
+            Me.Top = Me.Top - dimu
+            moa = True
+        End If
+    End Sub
+    Dim dimu As Short
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+        dimu = Int(Rnd() * 80) + 1
+        Timer4.Enabled = True
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Process.Start(Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0))
     End Sub
 End Class
