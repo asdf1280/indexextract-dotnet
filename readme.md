@@ -7,6 +7,8 @@ Indexextract 는 마인크래프트 인덱스 파일을 추출하는 프로그�
 이 프로그램을 빠르고 작동하는 편리한 프로그램이며 많은 운영체제
 (윈도우 10, 8, 7) 등을 지원합니다.
 
+파일은 indexextract\bin\debug\indexextract.exe 입니다.
+
 사용 방법---------
 우선 indexextract.exe 를 실행합니다.
 그리고 찾아보기를 클릭합니다.
@@ -20,3 +22,5 @@ Indexextract 는 마인크래프트 인덱스 파일을 추출하는 프로그�
 no english yet. :D:D:D
 
 Thank you.
+
+File is indexextract\bin\debug\indexextract.exe
