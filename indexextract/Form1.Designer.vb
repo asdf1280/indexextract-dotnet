@@ -31,16 +31,18 @@ Partial Class Form1
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'TextBox1
         '
+        Me.TextBox1.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(12, 47)
         Me.TextBox1.MaxLength = 2147483647
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextBox1.Size = New System.Drawing.Size(560, 300)
         Me.TextBox1.TabIndex = 0
         '
@@ -75,9 +77,9 @@ Partial Class Form1
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(341, 17)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(81, 12)
+        Me.Label1.Size = New System.Drawing.Size(52, 12)
         Me.Label1.TabIndex = 3
-        Me.Label1.Text = "현재 작업중 : "
+        Me.Label1.Text = "Status : "
         '
         'Button3
         '
@@ -101,19 +103,35 @@ Partial Class Form1
         '
         Me.Timer1.Interval = 1
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(174, 358)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(65, 12)
+        Me.Label2.TabIndex = 6
+        Me.Label2.Text = "현재 시간 :"
+        '
+        'Timer2
+        '
+        Me.Timer2.Enabled = True
+        Me.Timer2.Interval = 1
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 392)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 2.0"
+        Me.Text = "Index Extractor 2.5"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -127,4 +145,6 @@ Partial Class Form1
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Timer2 As Timer
 End Class
