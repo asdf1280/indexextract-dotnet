@@ -83,7 +83,7 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(12, 353)
+        Me.Button3.Location = New System.Drawing.Point(12, 357)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
         Me.Button3.TabIndex = 4
@@ -92,7 +92,7 @@ Partial Class Form1
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(93, 353)
+        Me.Button4.Location = New System.Drawing.Point(93, 357)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(75, 23)
         Me.Button4.TabIndex = 5
@@ -106,7 +106,7 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(174, 358)
+        Me.Label2.Location = New System.Drawing.Point(174, 362)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(65, 12)
         Me.Label2.TabIndex = 6
@@ -129,9 +129,8 @@ Partial Class Form1
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 2.5"
+        Me.Text = "Index Extractor 2.9"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -28,7 +28,13 @@
                 TextBox1.Text = "User canceled."
             End If
         ElseIf fi = DialogResult.OK Then
+            Dim abcd As Integer
+            abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
             fullt = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
+            If Split(OpenFileDialog1.FileName, "\")(abcd) = "legacy.json" Then
+                fullt = Split(fullt, Chr(34) & "virtual" & Chr(34) & ": true,")(1)
+            End If
+
             b = UBound(Split(fullt, "hash"))
             Button1.Enabled = True
         End If
@@ -113,5 +119,17 @@ b:
                 TextBox1.Text = "Click Browse"
             End If
         End If
+    End Sub
+
+    Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
+        Button3.Top = Me.Size.Height - 74
+        Button4.Top = Me.Size.Height - 74
+        Label2.Top = Me.Size.Height - 69
+        TextBox1.Height = Me.Height - 131
+        TextBox1.Width = Me.Width - 40
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+
     End Sub
 End Class
