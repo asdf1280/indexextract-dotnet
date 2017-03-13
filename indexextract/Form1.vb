@@ -58,7 +58,7 @@
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        On Error GoTo b
+        'On Error GoTo b
 
         abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
 
@@ -68,12 +68,25 @@
         Else
             Label1.Text = "Status : " & i & "/" & b + 1
         End If
+        Try
+            file = Split(fullt, Chr(34))(a)
+            hash = Split(fullt, Chr(34))(a + 4)
+        Catch ex As System.IndexOutOfRangeException
+            GoTo b
+        End Try
 
-        file = Split(fullt, Chr(34))(a)
-        hash = Split(fullt, Chr(34))(a + 4)
+
         'MsgBox(hash & " " & file)
-
-        My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file, True)
+        Try
+            My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file, True)
+        Catch ex As System.IO.FileNotFoundException
+            If korean Then
+                'TextBox1.Text = TextBox1.Text & vbCrLf & "파일 없음,건너뜀:" & file
+                TextBox1.Text = TextBox1.Text & vbCrLf & "No file, skip:" & file
+            Else
+                TextBox1.Text = TextBox1.Text & vbCrLf & "No file, skip:" & file
+            End If
+        End Try
         If korean Then
             'TextBox1.Text = TextBox1.Text & vbCrLf & "파일 복사됨:" & file
             TextBox1.Text = TextBox1.Text & vbCrLf & "File copy:" & file
@@ -81,10 +94,9 @@
             TextBox1.Text = TextBox1.Text & vbCrLf & "File copy:" & file
         End If
 
-
+        'TextBox1.Text = Microsoft.VisualBasic.Right(TextBox1.Text, 1300)
         '마지막으로 스크롤
-        TextBox1.SelectionStart = TextBox1.TextLength
-
+        TextBox1.SelectionStart = Len(TextBox1.Text)
         TextBox1.ScrollToCaret()
 
 

@@ -104,7 +104,7 @@ Partial Class Form1
         '
         'Timer1
         '
-        Me.Timer1.Interval = 1
+        Me.Timer1.Interval = 2
         '
         'Label2
         '
@@ -152,7 +152,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 2.9"
+        Me.Text = "Index Extractor 2.15"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
