@@ -7,13 +7,21 @@
 
 
 -----------Simple English guide-----------
+
 Start program.
+
 Just click Browse.
+
 Select file
+
 Click Start
+
 Wait
+
 Click 'Open'
+
 You finished.
+
 
 --------------------------------------------
 
