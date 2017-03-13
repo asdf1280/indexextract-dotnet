@@ -5,11 +5,6 @@ VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "indexextract", "indexextract\indexextract.vbproj", "{4AFAA36C-029B-47CE-9398-9D5AFCC11C23}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{84CFF159-D4E6-4588-BCB1-8D1AF869D45D}"
-	ProjectSection(SolutionItems) = preProject
-		Class1.vb = Class1.vb
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

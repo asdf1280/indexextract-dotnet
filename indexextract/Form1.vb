@@ -35,6 +35,20 @@
             If Split(OpenFileDialog1.FileName, "\")(abcd) = "legacy.json" Then
                 fullt = Split(fullt, Chr(34) & "virtual" & Chr(34) & ": true,")(1)
             End If
+            If Not Split(OpenFileDialog1.FileName, "\")(abcd) = "1.11.json" And Not Split(OpenFileDialog1.FileName, "\")(abcd) = "1.10.json" And Not Split(OpenFileDialog1.FileName, "\")(abcd) = "1.9.json" And
+                Not Split(OpenFileDialog1.FileName, "\")(abcd) = "1.8.json" And Not Split(OpenFileDialog1.FileName, "\")(abcd) = "1.7.10.json" And Not Split(OpenFileDialog1.FileName, "\")(abcd) = "legacy.json" Then
+                Dim aaaa
+                If korean Then
+                    Console.Beep()
+                    aaaa = MsgBox("지정된 파일만 열 수 있습니다." & vbCrLf & "허가된 파일 목록을 확인하려면 확인을 클릭하십시오.", vbOKCancel, "IndexExtract")
+                Else
+                    Console.Beep()
+                    aaaa = MsgBox("Only you can open (Version).json / legacy.json. Click ok to open accepted filename list.", vbOKCancel, "IndexExtract")
+                End If
+                If aaaa = vbOK Then
+                    Process.Start("https://github.com/dhkim0800/indexextract/wiki/%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EB%B2%84%EC%A0%84")
+                End If
+            End If
             Button5.Visible = False
             b = UBound(Split(fullt, "hash"))
             Button1.Enabled = True
