@@ -6,6 +6,19 @@
 
 
 
+-----------Simple English guide-----------
+Start program.
+Just click Browse.
+Select file
+Click Start
+Wait
+Click 'Open'
+You finished.
+
+--------------------------------------------
+
+
+
 한국어 설명
 
 Indexextract 는 마인크래프트 인덱스 파일을 추출하는 프로그램입니다.
