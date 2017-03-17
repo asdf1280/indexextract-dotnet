@@ -16,6 +16,26 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         OpenFileDialog1.InitialDirectory = "c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\indexes"
+
+        '설정파일 처음 세팅
+        If Not My.Computer.FileSystem.DirectoryExists("c:\indexextract") Then
+            My.Computer.FileSystem.CreateDirectory("c:\indexextract")
+        End If
+        If Not My.Computer.FileSystem.FileExists("c:\indexextract\lang.set") Then
+            My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=EN_US", False, System.Text.Encoding.UTF7)
+        End If
+
+        '설정파일 로드
+        '언어 설정파일
+        Dim se As String
+        se = My.Computer.FileSystem.ReadAllText("c:\indexextract\lang.set", System.Text.Encoding.UTF7)
+        Dim lang As String
+        lang = Split(se, "lang=")(1)
+        If lang = "EN_US" Then
+            Button3_Click(sender, e)
+        ElseIf lang = "KO_KR" Then
+            Button4_Click(sender, e)
+        End If
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -61,6 +81,7 @@
         Button1.Text = "Start"
         Label1.Text = "Status : ready"
         korean = False
+        My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=EN_US", False, System.Text.Encoding.UTF7)
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -69,6 +90,7 @@
         Button5.Text = "폴더 열기"
         Label1.Text = "현재 : 준비"
         korean = True
+        My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=KO_KR", False, System.Text.Encoding.UTF7)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -83,12 +105,12 @@
             bi = 30
         ElseIf i > b - 500 Then
             bi = 40
+        ElseIf i < 50 Then
+            bi = 1
+        ElseIf i < 100 Then
+            bi = 2
         ElseIf i < 300 Then
             bi = 20
-        ElseIf i < 50 Then
-            bi = 5
-        ElseIf i < 100 Then
-            bi = 1
         Else
             bi = 50
         End If

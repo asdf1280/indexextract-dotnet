@@ -152,7 +152,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 2.20 Dev Beta 1 170317001"
+        Me.Text = "Index Extractor 2.20 Dev Beta 2 170317002"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
