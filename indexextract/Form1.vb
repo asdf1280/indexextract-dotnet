@@ -75,14 +75,20 @@
         abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
         'On Error GoTo b
         Dim ai, bi As Integer
-        If i > b - 5 Then
+        If i > b - 30 Then
             bi = 1
-        ElseIf i > b - 10 Then
-            bi = 2
-        ElseIf i > b - 30 Then
-            bi = 10
         ElseIf i > b - 80 Then
+            bi = 5
+        ElseIf i > b - 300 Then
             bi = 30
+        ElseIf i > b - 500 Then
+            bi = 40
+        ElseIf i < 300 Then
+            bi = 20
+        ElseIf i < 50 Then
+            bi = 5
+        ElseIf i < 100 Then
+            bi = 1
         Else
             bi = 50
         End If
