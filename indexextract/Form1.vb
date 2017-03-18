@@ -15,8 +15,8 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'MsgBox(Me.BackgroundImage)
         OpenFileDialog1.InitialDirectory = "c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\indexes"
-
         '설정파일 처음 세팅
         If Not My.Computer.FileSystem.DirectoryExists("c:\indexextract") Then
             My.Computer.FileSystem.CreateDirectory("c:\indexextract")
@@ -37,12 +37,12 @@
             Button4_Click(sender, e)
         End If
     End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim fi = OpenFileDialog1.ShowDialog
         On Error Resume Next
         If fi = DialogResult.Cancel Then
             If korean Then
+
                 TextBox1.Text = "사용자가 취소했습니다.
 다시 찾아보기를 클릭하십시오."
             Else
@@ -80,8 +80,14 @@
         Button5.Text = "Open"
         Button1.Text = "Start"
         Label1.Text = "Status : ready"
+        Button6.Text = "Change Background"
+        Form2.Button3.Text = "Reset"
+        Button6.Left = 422
+        Button6.Width = 150
+        Form2.OpenFileDialog1.Title = "Browse Picture"
         korean = False
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=EN_US", False, System.Text.Encoding.UTF7)
+        Form1_SizeChanged(sender, e)
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -89,8 +95,14 @@
         Button1.Text = "시작"
         Button5.Text = "폴더 열기"
         Label1.Text = "현재 : 준비"
+        Button6.Text = "배경 변경"
+        Form2.Button3.Text = "초기화"
+        Button6.Left = 497
+        Button6.Width = 75
+        Form2.OpenFileDialog1.Title = "사진 찾아보기"
         korean = True
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=KO_KR", False, System.Text.Encoding.UTF7)
+        Form1_SizeChanged(sender, e)
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -197,6 +209,13 @@ b:
         Label2.Top = Me.Size.Height - 69
         TextBox1.Height = Me.Height - 131
         TextBox1.Width = Me.Width - 40
+        If korean Then
+            Button6.Left = Me.Width - 103
+            Button6.Top = Me.Height - 74
+        Else
+            Button6.Left = Me.Width - 178
+            Button6.Top = Me.Height - 74
+        End If
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
@@ -261,4 +280,20 @@ b:
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Process.Start(Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0))
     End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Form2.Top = Me.Top
+        Form2.Left = Me.Left
+        If korean Then
+            Form2.Label1.Text = "적용할 방법을 선택하십시오."
+            Form2.Button1.Text = "단색"
+            Form2.Button2.Text = "사진"
+        Else
+            Form2.Label1.Text = "Select Background Type."
+            Form2.Button1.Text = "Color"
+            Form2.Button2.Text = "Picture"
+        End If
+        Form2.ShowDialog()
+    End Sub
+
 End Class
