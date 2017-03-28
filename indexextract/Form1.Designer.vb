@@ -38,6 +38,9 @@ Partial Class Form1
         Me.Button5 = New System.Windows.Forms.Button()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.dotdotdot = New System.Windows.Forms.Timer(Me.components)
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -157,11 +160,42 @@ Partial Class Form1
         Me.Button6.Text = "배경 변경"
         Me.Button6.UseVisualStyleBackColor = False
         '
+        'Label3
+        '
+        Me.Label3.BackColor = System.Drawing.Color.Silver
+        Me.Label3.Font = New System.Drawing.Font("맑은 고딕", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label3.Location = New System.Drawing.Point(189, 104)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(204, 130)
+        Me.Label3.TabIndex = 9
+        Me.Label3.Text = "......"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.Label3.Visible = False
+        '
+        'dotdotdot
+        '
+        Me.dotdotdot.Enabled = True
+        Me.dotdotdot.Interval = 250
+        '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.Color.Silver
+        Me.Label4.Font = New System.Drawing.Font("맑은 고딕", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label4.Location = New System.Drawing.Point(190, 146)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(203, 23)
+        Me.Label4.TabIndex = 10
+        Me.Label4.Text = "Extracting"
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label4.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 388)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Label2)
@@ -172,7 +206,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 2.20 Dev Beta 3 170317003"
+        Me.Text = "Index Extractor 2.20 Dev Beta 4 170328001"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -193,4 +227,7 @@ Partial Class Form1
     Friend WithEvents Button5 As Button
     Friend WithEvents ColorDialog1 As ColorDialog
     Friend WithEvents Button6 As Button
+    Friend WithEvents Label3 As Label
+    Friend WithEvents dotdotdot As Timer
+    Friend WithEvents Label4 As Label
 End Class

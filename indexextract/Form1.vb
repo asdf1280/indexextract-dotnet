@@ -6,15 +6,30 @@
     Public hash As String
     Public b As Integer
     Public file As String
+    Dim cmp As Integer
+    Dim ncp As Integer
     Public korean As Boolean = False
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If korean Then
+            Label4.Text = "추출중"
+        Else
+            Label4.Text = "Extracting"
+        End If
         TextBox1.Text = ""
         i = 0
         a = 3
+        cmp = 0
+        ncp = 0
+        Label4.Visible = True
+        Label3.Visible = True
         Timer1.Enabled = True
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim a As Integer = Screen.PrimaryScreen.Bounds.Width / 2
+        Dim b As Integer = Screen.PrimaryScreen.Bounds.Height / 2
+        Me.Top = b - Me.Height / 2
+        Me.Left = a - Me.Width / 2
         'MsgBox(Me.BackgroundImage)
         OpenFileDialog1.InitialDirectory = "c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\indexes"
         '설정파일 처음 세팅
@@ -36,6 +51,7 @@
         ElseIf lang = "KO_KR" Then
             Button4_Click(sender, e)
         End If
+        Form1_SizeChanged(sender, e)
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim fi = OpenFileDialog1.ShowDialog
@@ -108,26 +124,7 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
         'On Error GoTo b
-        Dim ai, bi As Integer
-        If i > b - 30 Then
-            bi = 1
-        ElseIf i > b - 80 Then
-            bi = 5
-        ElseIf i > b - 300 Then
-            bi = 30
-        ElseIf i > b - 500 Then
-            bi = 40
-        ElseIf i < 50 Then
-            bi = 1
-        ElseIf i < 100 Then
-            bi = 2
-        ElseIf i < 300 Then
-            bi = 20
-        Else
-            bi = 50
-        End If
-        For ai = 1 To bi
-            i = i + 1
+        i = i + 1
             If korean Then
                 Label1.Text = "현재 : " & i & "/" & b + 1
             Else
@@ -142,6 +139,7 @@
             Try
                 My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file, True)
             Catch ex As System.IO.FileNotFoundException
+                ncp = ncp + 1
                 If korean Then
                     'TextBox1.Text = TextBox1.Text & vbCrLf & "파일 없음,건너뜀:" & file
                     TextBox1.Text = TextBox1.Text & vbCrLf & "No file, skip:" & file
@@ -149,6 +147,7 @@
                     TextBox1.Text = TextBox1.Text & vbCrLf & "No file, skip:" & file
                 End If
             End Try
+            cmp = cmp + 1
             If korean Then
                 'TextBox1.Text = TextBox1.Text & vbCrLf & "파일 복사됨:" & file
                 TextBox1.Text = TextBox1.Text & vbCrLf & "File copy:" & file
@@ -162,17 +161,20 @@
             TextBox1.ScrollToCaret()
 
 
-            a = a + 8
-        Next
+        a = a + 8
 
         'MsgBox(hash & " " & file)
 
         Exit Sub
 b:
+        Label3.Visible = False
+        Label4.Visible = False
         If korean Then
             TextBox1.Text = "완료됨 : " & Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\... 에 저장되었습니다."
+            TextBox1.Text = TextBox1.Text & vbCrLf & "성공 : " & cmp & " 실패(파일 없음) : " & ncp & " 총 작업량 : " & cmp + ncp
         Else
             TextBox1.Text = "Finished : " & Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\..."
+            TextBox1.Text = TextBox1.Text & vbCrLf & "Complete : " & cmp & " Fail (No File) : " & ncp & " Total : " & cmp + ncp
         End If
         Button5.Visible = True
 
@@ -216,6 +218,14 @@ b:
             Button6.Left = Me.Width - 178
             Button6.Top = Me.Height - 74
         End If
+        Label4.Top = (Me.Height / 2) - Label4.Height / 2
+        Label4.Left = (Me.Width / 2) - Label4.Width / 2
+        Label3.Top = (Me.Height / 2) - Label3.Height / 2
+        Label3.Left = (Me.Width / 2) - Label3.Width / 2
+
+        'Button5.Left = Me.Width - 588
+        Button5.Top = Me.Height - 156
+        Button5.Width = Me.Width - 40
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
@@ -296,4 +306,28 @@ b:
         Form2.ShowDialog()
     End Sub
 
+    Private Sub dotdotdot_Tick(sender As Object, e As EventArgs) Handles dotdotdot.Tick
+        Select Case Label3.Text
+            Case "......."
+                Label3.Text = ""
+            Case ""
+                Label3.Text = "."
+            Case "."
+                Label3.Text = ".."
+            Case ".."
+                Label3.Text = "..."
+            Case "..."
+                Label3.Text = "...."
+            Case "...."
+                Label3.Text = "....."
+            Case "....."
+                Label3.Text = "......"
+            Case "......"
+                Label3.Text = "......."
+        End Select
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+
+    End Sub
 End Class
