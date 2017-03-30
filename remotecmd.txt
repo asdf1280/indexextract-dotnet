@@ -1,0 +1,2 @@
+git remote remove origin
+git remote add origin https://github.com/dhkim0800/indexextract.git
