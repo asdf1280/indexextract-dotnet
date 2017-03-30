@@ -262,3 +262,4 @@ __pycache__/
 /bintask.cmd
 /remotecmd.txt
 Binaries
+/send.sh
