@@ -109,7 +109,8 @@ Partial Class Form1
         Me.Button3.TabIndex = 4
         Me.Button3.Text = "English"
         Me.infott.SetToolTip(Me.Button3, "English : EN_US" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "영어 (English)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Most of them are international languages." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(대부분이" &
-        " 알아듣는 국제 언어입니다.)")
+        " 알아듣는 국제 언어입니다.)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Language settings are saved as local files." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(언어 설정은 로컬 파일로 " &
+        "저장됩니다.)")
         Me.Button3.UseVisualStyleBackColor = False
         '
         'Button4
@@ -122,7 +123,8 @@ Partial Class Form1
         Me.Button4.TabIndex = 5
         Me.Button4.Text = "한국어"
         Me.infott.SetToolTip(Me.Button4, "Korean : KO_KR" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "한국어 (Korean)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "It is not recommended for people in other countri" &
-        "es!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(다른 나라 사람들에게는 권장하지 않습니다!)")
+        "es!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(다른 나라 사람들에게는 권장하지 않습니다!)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Language settings are saved as local files." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(" &
+        "언어 설정은 로컬 파일로 저장됩니다.)")
         Me.Button4.UseVisualStyleBackColor = False
         '
         'Timer1
