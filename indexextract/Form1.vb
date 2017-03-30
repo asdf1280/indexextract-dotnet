@@ -77,8 +77,8 @@
             If Split(OpenFileDialog1.FileName, "\")(abcd) = "legacy.json" Then
                 fullt = Split(fullt, Chr(34) & "virtual" & Chr(34) & ": true,")(1)
             End If
-            If Not Split(OpenFileDialog1.FileName, "\")(abcd) = "1.11.json" And Not Split(OpenFileDialog1.FileName, "\")(abcd) = "1.10.json" And Not Split(OpenFileDialog1.FileName, "\")(abcd) = "1.9.json" And
-                Not Split(OpenFileDialog1.FileName, "\")(abcd) = "1.8.json" And Not Split(OpenFileDialog1.FileName, "\")(abcd) = "1.7.10.json" And Not Split(OpenFileDialog1.FileName, "\")(abcd) = "legacy.json" Then
+            Dim fn As String = Split(OpenFileDialog1.FileName, "\")(abcd)
+            If Not fn = "1.11.json" And Not fn = "1.10.json" And Not fn = "1.9.json" And Not fn = "1.8.json" And Not fn = "1.7.10.json" And Not fn = "legacy.json" And Not fn = "1.12.json" Then
                 Dim aaaa
                 If korean Then
                     Console.Beep()
