@@ -218,7 +218,7 @@ b:
         mopen = True
         Button5.Visible = True
         Button7.Visible = True
-        TextBox1.ScrollBars = ScrollBars.Horizontal
+        TextBox1.ScrollBars = ScrollBars.Vertical
         tbtup.Enabled = True
         Timer1.Enabled = False
         Button1.Enabled = False
