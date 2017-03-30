@@ -9,6 +9,7 @@
     Dim cmp As Integer
     Dim ncp As Integer
     Public korean As Boolean = False
+    Dim mopen As Boolean
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If korean Then
             Label4.Text = "추출중"
@@ -54,6 +55,11 @@
         Form1_SizeChanged(sender, e)
     End Sub
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If korean Then
+            OpenFileDialog1.Title = "인덱스 찾아보기"
+        Else
+            OpenFileDialog1.Title = "Select Index JSON"
+        End If
         Dim fi = OpenFileDialog1.ShowDialog
         On Error Resume Next
         If fi = DialogResult.Cancel Then
@@ -85,13 +91,22 @@
                     Process.Start("https://github.com/dhkim0800/indexextract/wiki/%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EB%B2%84%EC%A0%84")
                 End If
             End If
-            Button5.Visible = False
+            TextBox1.ScrollBars = ScrollBars.None
+            If mopen Then
+                mopen = False
+                tbtdn.Enabled = True
+            End If
             b = UBound(Split(fullt, "hash"))
             Button1.Enabled = True
         End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        TextBox1.Font = New Font("Segoe UI", 9)
+        Label4.Font = New Font("Segoe UI", 14.25)
+        Label2.Font = New Font("Segoe UI", 9)
+        Button5.Font = New Font("Segoe UI", 18)
+        Button7.Font = New Font("Segoe UI", 36)
         Button2.Text = "Browse"
         Button5.Text = "Open"
         Button1.Text = "Start"
@@ -103,10 +118,20 @@
         Form2.OpenFileDialog1.Title = "Browse Picture"
         korean = False
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=EN_US", False, System.Text.Encoding.UTF7)
+        '툴팁 설정
+        infott.SetToolTip(Label2, "Time")
+        infott.SetToolTip(Button2, "100% free!! Use it right now!")
+
+        '마무리 작업
         Form1_SizeChanged(sender, e)
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        TextBox1.Font = New Font("맑은 고딕", 9)
+        Label4.Font = New Font("맑은 고딕", 14.25)
+        Label2.Font = New Font("궁서", 9)
+        Button5.Font = New Font("바탕", 18)
+        Button7.Font = New Font("맑은 고딕", 36)
         Button2.Text = "찾아보기"
         Button1.Text = "시작"
         Button5.Text = "폴더 열기"
@@ -118,6 +143,11 @@
         Form2.OpenFileDialog1.Title = "사진 찾아보기"
         korean = True
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=KO_KR", False, System.Text.Encoding.UTF7)
+        '툴팁 설정
+        infott.SetToolTip(Label2, "현재 시간")
+        infott.SetToolTip(Button2, "100% 무료입니다!! 지금 바로 추출해보세요!")
+
+        '마무리 작업
         Form1_SizeChanged(sender, e)
     End Sub
 
@@ -126,10 +156,10 @@
         'On Error GoTo b
         i = i + 1
             If korean Then
-                Label1.Text = "현재 : " & i & "/" & b + 1
-            Else
-                Label1.Text = "Status : " & i & "/" & b + 1
-            End If
+            Label1.Text = "현재 : " & i & "/" & b
+        Else
+            Label1.Text = "Status : " & i & "/" & b
+        End If
             Try
                 file = Split(fullt, Chr(34))(a)
                 hash = Split(fullt, Chr(34))(a + 4)
@@ -137,8 +167,8 @@
                 GoTo b
             End Try
             Try
-                My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file, True)
-            Catch ex As System.IO.FileNotFoundException
+            My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file, True)
+        Catch ex As System.IO.FileNotFoundException
                 ncp = ncp + 1
                 If korean Then
                     'TextBox1.Text = TextBox1.Text & vbCrLf & "파일 없음,건너뜀:" & file
@@ -169,17 +199,31 @@
 b:
         Label3.Visible = False
         Label4.Visible = False
+        Dim iii As Integer
+        For iii = 0 To 5
+            TextBox1.Text = TextBox1.Text & vbCrLf
+        Next
         If korean Then
-            TextBox1.Text = "완료됨 : " & Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\... 에 저장되었습니다."
+            TextBox1.Text = TextBox1.Text & vbCrLf & "완료됨 : " & Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\... 에 저장되었습니다."
             TextBox1.Text = TextBox1.Text & vbCrLf & "성공 : " & cmp & " 실패(파일 없음) : " & ncp & " 총 작업량 : " & cmp + ncp
         Else
-            TextBox1.Text = "Finished : " & Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\..."
+            TextBox1.Text = TextBox1.Text & vbCrLf & "Finished : " & Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\..."
             TextBox1.Text = TextBox1.Text & vbCrLf & "Complete : " & cmp & " Fail (No File) : " & ncp & " Total : " & cmp + ncp
         End If
+        For iii = 0 To 5
+            TextBox1.Text = TextBox1.Text & vbCrLf
+        Next
+        Button5.Top = Me.Height + 8
+        Button7.Top = Me.Height + 8
+        mopen = True
         Button5.Visible = True
-
+        Button7.Visible = True
+        TextBox1.ScrollBars = ScrollBars.Horizontal
+        tbtup.Enabled = True
         Timer1.Enabled = False
         Button1.Enabled = False
+        TextBox1.SelectionStart = Len(TextBox1.Text)
+        TextBox1.ScrollToCaret()
         If korean Then
             Label1.Text = "현재 : 준비"
         Else
@@ -218,14 +262,18 @@ b:
             Button6.Left = Me.Width - 178
             Button6.Top = Me.Height - 74
         End If
-        Label4.Top = (Me.Height / 2) - Label4.Height / 2
+        Label4.Top = ((Me.Height / 2) - Label4.Height / 2) - Label3.Height / 5
         Label4.Left = (Me.Width / 2) - Label4.Width / 2
         Label3.Top = (Me.Height / 2) - Label3.Height / 2
         Label3.Left = (Me.Width / 2) - Label3.Width / 2
 
         'Button5.Left = Me.Width - 588
-        Button5.Top = Me.Height - 156
-        Button5.Width = Me.Width - 40
+        Button5.Top = Me.Height - 160
+        Button5.Width = Me.Width - 134
+
+        'Button7 폴더 열기 메뉴 닫기버튼
+        Button7.Top = Me.Height - 160
+        Button7.Left = Me.Width - 116
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
@@ -329,5 +377,34 @@ b:
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
 
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        'Button5.Visible = False
+        'Button7.Visible = True
+        tbtdn.Enabled = True
+        mopen = False
+    End Sub
+
+    Private Sub tbtup_Tick(sender As Object, e As EventArgs) Handles tbtup.Tick
+        Button5.Visible = True
+        Button7.Visible = True
+        If Not Button5.Top = Me.Height - 160 Then
+            Button5.Top = Button5.Top - 1
+            Button7.Top = Button7.Top - 1
+        Else
+            tbtup.Enabled = False
+        End If
+    End Sub
+
+    Private Sub tbtdn_Tick(sender As Object, e As EventArgs) Handles tbtdn.Tick
+        If Not Button5.Top = Me.Height + 8 Then
+            Button5.Top = Button5.Top + 1
+            Button7.Top = Button7.Top + 1
+        Else
+            tbtdn.Enabled = False
+            Button5.Visible = False
+            Button7.Visible = False
+        End If
     End Sub
 End Class

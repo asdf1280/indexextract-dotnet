@@ -41,6 +41,10 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dotdotdot = New System.Windows.Forms.Timer(Me.components)
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.tbtup = New System.Windows.Forms.Timer(Me.components)
+        Me.tbtdn = New System.Windows.Forms.Timer(Me.components)
+        Me.infott = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'TextBox1
@@ -58,6 +62,7 @@ Partial Class Form1
         '
         Me.Button1.BackColor = System.Drawing.Color.Transparent
         Me.Button1.Enabled = False
+        Me.Button1.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Button1.Location = New System.Drawing.Point(155, 12)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(180, 23)
@@ -68,6 +73,7 @@ Partial Class Form1
         'Button2
         '
         Me.Button2.BackColor = System.Drawing.Color.Transparent
+        Me.Button2.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Button2.Location = New System.Drawing.Point(12, 12)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(137, 23)
@@ -86,6 +92,7 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("돋움", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Label1.Location = New System.Drawing.Point(341, 17)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(52, 12)
@@ -95,21 +102,27 @@ Partial Class Form1
         'Button3
         '
         Me.Button3.BackColor = System.Drawing.Color.Transparent
+        Me.Button3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button3.Location = New System.Drawing.Point(12, 357)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
         Me.Button3.TabIndex = 4
         Me.Button3.Text = "English"
+        Me.infott.SetToolTip(Me.Button3, "English : EN_US" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "영어 (English)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Most of them are international languages." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(대부분이" &
+        " 알아듣는 국제 언어입니다.)")
         Me.Button3.UseVisualStyleBackColor = False
         '
         'Button4
         '
         Me.Button4.BackColor = System.Drawing.Color.Transparent
+        Me.Button4.Font = New System.Drawing.Font("궁서체", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Button4.Location = New System.Drawing.Point(93, 357)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(75, 23)
         Me.Button4.TabIndex = 5
         Me.Button4.Text = "한국어"
+        Me.infott.SetToolTip(Me.Button4, "Korean : KO_KR" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "한국어 (Korean)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "It is not recommended for people in other countri" &
+        "es!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(다른 나라 사람들에게는 권장하지 않습니다!)")
         Me.Button4.UseVisualStyleBackColor = False
         '
         'Timer1
@@ -120,11 +133,13 @@ Partial Class Form1
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("궁서", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Label2.Location = New System.Drawing.Point(174, 362)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(65, 12)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "현재 시간 :"
+        Me.infott.SetToolTip(Me.Label2, "Time")
         '
         'Timer2
         '
@@ -141,9 +156,10 @@ Partial Class Form1
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(12, 271)
+        Me.Button5.Font = New System.Drawing.Font("바탕", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Button5.Location = New System.Drawing.Point(12, 273)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(560, 76)
+        Me.Button5.Size = New System.Drawing.Size(466, 76)
         Me.Button5.TabIndex = 7
         Me.Button5.Text = "Open"
         Me.Button5.UseVisualStyleBackColor = True
@@ -180,7 +196,7 @@ Partial Class Form1
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.Silver
-        Me.Label4.Font = New System.Drawing.Font("맑은 고딕", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI Symbol", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.Location = New System.Drawing.Point(190, 146)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(203, 23)
@@ -189,15 +205,39 @@ Partial Class Form1
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.Label4.Visible = False
         '
+        'Button7
+        '
+        Me.Button7.Font = New System.Drawing.Font("맑은 고딕", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Button7.Location = New System.Drawing.Point(484, 273)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(88, 76)
+        Me.Button7.TabIndex = 11
+        Me.Button7.Text = "▼"
+        Me.Button7.UseVisualStyleBackColor = True
+        Me.Button7.Visible = False
+        '
+        'tbtup
+        '
+        Me.tbtup.Interval = 1
+        '
+        'tbtdn
+        '
+        Me.tbtdn.Interval = 1
+        '
+        'infott
+        '
+        Me.infott.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 388)
+        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -206,7 +246,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 2.20 Dev Beta 4 170328001"
+        Me.Text = "Index Extractor 2.20 Release"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -230,4 +270,8 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents dotdotdot As Timer
     Friend WithEvents Label4 As Label
+    Friend WithEvents Button7 As Button
+    Friend WithEvents tbtup As Timer
+    Friend WithEvents tbtdn As Timer
+    Friend WithEvents infott As ToolTip
 End Class
