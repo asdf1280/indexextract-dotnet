@@ -31,9 +31,7 @@ Partial Class Form1
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dotdotdot = New System.Windows.Forms.Timer(Me.components)
         Me.Label4 = New System.Windows.Forms.Label()
@@ -41,6 +39,7 @@ Partial Class Form1
         Me.tbtup = New System.Windows.Forms.Timer(Me.components)
         Me.tbtdn = New System.Windows.Forms.Timer(Me.components)
         Me.infott = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -125,19 +124,7 @@ Partial Class Form1
         '
         'Timer1
         '
-        Me.Timer1.Interval = 2
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label2.Location = New System.Drawing.Point(174, 362)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(66, 15)
-        Me.Label2.TabIndex = 6
-        Me.Label2.Text = "현재 시간 :"
-        Me.infott.SetToolTip(Me.Label2, "Time")
+        Me.Timer1.Interval = 1
         '
         'Button5
         '
@@ -165,7 +152,7 @@ Partial Class Form1
         'dotdotdot
         '
         Me.dotdotdot.Enabled = True
-        Me.dotdotdot.Interval = 250
+        Me.dotdotdot.Interval = 500
         '
         'Label4
         '
@@ -202,16 +189,26 @@ Partial Class Form1
         '
         Me.infott.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(449, 358)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(123, 23)
+        Me.Button6.TabIndex = 12
+        Me.Button6.Text = "Pause"
+        Me.Button6.UseVisualStyleBackColor = True
+        Me.Button6.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 388)
+        Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label1)
@@ -219,7 +216,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 2.37 Pre-Release 1"
+        Me.Text = "Index Extractor 2.37 Pre-Release 2"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -233,9 +230,7 @@ Partial Class Form1
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents Label2 As Label
     Friend WithEvents Button5 As Button
-    Friend WithEvents ColorDialog1 As ColorDialog
     Friend WithEvents Label3 As Label
     Friend WithEvents dotdotdot As Timer
     Friend WithEvents Label4 As Label
@@ -243,4 +238,5 @@ Partial Class Form1
     Friend WithEvents tbtup As Timer
     Friend WithEvents tbtdn As Timer
     Friend WithEvents infott As ToolTip
+    Friend WithEvents Button6 As Button
 End Class
