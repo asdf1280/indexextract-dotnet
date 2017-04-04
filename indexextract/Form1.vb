@@ -1,6 +1,6 @@
 ﻿Public Class Form1
     Dim ale As Integer = 0
-    Dim fullt As String
+    Public fullt As String
     Dim abcd As Integer
     Public i As Integer
     Public a As Integer ' = 3
@@ -69,59 +69,38 @@
         ElseIf lang = "KO_KR" Then
             Button4_Click(sender, e)
         Else
-            MsgBox("Unknown lang. Remove c:\indexextract The settings will be reset and it will work.")
-            End
+            My.Computer.FileSystem.DeleteFile("c:\indexextract\lang.set")
+            Application.Restart()
         End If
         Form1_SizeChanged(sender, e)
     End Sub
+    Public cancel As Boolean = False
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
         If korean Then
             OpenFileDialog1.Title = "인덱스 찾아보기"
         Else
             OpenFileDialog1.Title = "Select Index JSON"
         End If
-        Dim fi = OpenFileDialog1.ShowDialog
-        On Error Resume Next
-        If fi = DialogResult.Cancel Then
-            If korean Then
 
-                TextBox1.Text = "사용자가 취소했습니다.
-다시 찾아보기를 클릭하십시오."
-            Else
-                TextBox1.Text = "User canceled."
-            End If
-        ElseIf fi = DialogResult.OK Then
-            Dim abcd As Integer
-            abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
-            fullt = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
-            If Split(OpenFileDialog1.FileName, "\")(abcd) = "legacy.json" Then
-                fullt = Split(fullt, Chr(34) & "virtual" & Chr(34) & ": true,")(1)
-            End If
-            '허가된 파일 이름인지 확인
-            Dim fn As String = Split(OpenFileDialog1.FileName, "\")(abcd)
-            Dim sp As String = "legacy.json   1.7.10.json   1.8.json   1.9.json   1.10.json   1.11.json   1.12.json"
-            If Replace(sp, fn, "") = sp Then
-                Dim aaaa
-                If korean Then
-                    Console.Beep()
-                    aaaa = MsgBox("지정된 파일만 열 수 있습니다." & vbCrLf & "허가된 파일 목록을 확인하려면 '확인'을 클릭하십시오.", vbOKCancel, "IndexExtract")
-                Else
-                    Console.Beep()
-                    aaaa = MsgBox("Only you can open (Version).json / legacy.json. Click 'OK' to open accepted filename list.", vbOKCancel, "IndexExtract")
-                End If
-                If aaaa = vbOK Then
-                    Process.Start("https://github.com/dhkim0800/indexextract/wiki/%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EB%B2%84%EC%A0%84")
-                End If
-                Exit Sub
-            End If
-            TextBox1.ScrollBars = ScrollBars.None
-            If mopen Then
-                mopen = False
-                tbtdn.Enabled = True
-            End If
-            b = UBound(Split(fullt, "hash"))
-            Button1.Enabled = True
+
+        Form2.ShowDialog()
+        If cancel Then
+            Exit Sub
         End If
+        Button1.Enabled = True
+        fullt = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
+        If korean Then
+            TextBox1.Text = "불러옴 : " & OpenFileDialog1.FileName
+        Else
+            TextBox1.Text = "Loaded : " & OpenFileDialog1.FileName
+        End If
+        If mopen Then
+            mopen = False
+            tbtdn.Enabled = True
+        End If
+        b = UBound(Split(fullt, "hash"))
+
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
