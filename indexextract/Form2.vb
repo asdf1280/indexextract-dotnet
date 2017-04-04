@@ -45,6 +45,7 @@ Public Class Form2
     End Sub
     Public korean As Boolean = False
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ComboBox1.Items.Clear()
         Form1.cancel = False
         Dim a As Integer = Screen.PrimaryScreen.Bounds.Width / 2
         Dim b As Integer = Screen.PrimaryScreen.Bounds.Height / 2
