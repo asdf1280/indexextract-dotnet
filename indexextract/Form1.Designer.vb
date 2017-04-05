@@ -33,11 +33,11 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.dotdotdot = New System.Windows.Forms.Timer(Me.components)
+        Me.Dotdotdot = New System.Windows.Forms.Timer(Me.components)
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button7 = New System.Windows.Forms.Button()
-        Me.tbtup = New System.Windows.Forms.Timer(Me.components)
-        Me.tbtdn = New System.Windows.Forms.Timer(Me.components)
+        Me.Tbtup = New System.Windows.Forms.Timer(Me.components)
+        Me.Tbtdn = New System.Windows.Forms.Timer(Me.components)
         Me.infott = New System.Windows.Forms.ToolTip(Me.components)
         Me.Button6 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
@@ -149,10 +149,10 @@ Partial Class Form1
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.Label3.Visible = False
         '
-        'dotdotdot
+        'Dotdotdot
         '
-        Me.dotdotdot.Enabled = True
-        Me.dotdotdot.Interval = 500
+        Me.Dotdotdot.Enabled = True
+        Me.Dotdotdot.Interval = 500
         '
         'Label4
         '
@@ -177,13 +177,13 @@ Partial Class Form1
         Me.Button7.UseVisualStyleBackColor = True
         Me.Button7.Visible = False
         '
-        'tbtup
+        'Tbtup
         '
-        Me.tbtup.Interval = 1
+        Me.Tbtup.Interval = 1
         '
-        'tbtdn
+        'Tbtdn
         '
-        Me.tbtdn.Interval = 1
+        Me.Tbtdn.Interval = 1
         '
         'infott
         '
@@ -216,7 +216,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 2.40.1 Pre"
+        Me.Text = "Index Extractor 2.40.2 Pre"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -232,11 +232,11 @@ Partial Class Form1
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Button5 As Button
     Friend WithEvents Label3 As Label
-    Friend WithEvents dotdotdot As Timer
+    Friend WithEvents Dotdotdot As Timer
     Friend WithEvents Label4 As Label
     Friend WithEvents Button7 As Button
-    Friend WithEvents tbtup As Timer
-    Friend WithEvents tbtdn As Timer
+    Friend WithEvents Tbtup As Timer
+    Friend WithEvents Tbtdn As Timer
     Friend WithEvents infott As ToolTip
     Friend WithEvents Button6 As Button
 End Class

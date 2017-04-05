@@ -3,7 +3,7 @@
 Public Class Form2
     Dim cfm As Boolean = False
     Public sp As String = "legacy.json   1.7.10.json   1.8.json   1.9.json 1.9-aprilfools.json   1.10.json   1.11.json   1.12.json"
-    Public Function fds()
+    Public Function Fds()
         For Each foundFile As String In My.Computer.FileSystem.GetFiles(
           "c:\Users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\indexes")
 
@@ -43,37 +43,36 @@ Public Class Form2
             Label3.Text = Form1.OpenFileDialog1.FileName
         End If
     End Sub
-    Public korean As Boolean = False
+    Public korean As Boolean
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        korean = Form1.korean
+        'MsgBox(korean)
         ComboBox1.Items.Clear()
         Form1.cancel = False
         Dim a As Integer = Screen.PrimaryScreen.Bounds.Width / 2
         Dim b As Integer = Screen.PrimaryScreen.Bounds.Height / 2
         Me.Top = b - Me.Height / 2
         Me.Left = a - Me.Width / 2
-        fds()
-        If Form1.korean Then
-            korean = True
-        End If
+        Fds()
         If korean Then
-            Me.Text = "JSON 찾아보기"
+            Me.Text = "찾아보기"
             Button1.Text = "파일에서 찾아보기"
-            Label1.Text = "또는
-목록에서 선택하기 : "
+            GroupBox1.Text = "파일 찾아보기"
+            GroupBox2.Text = "목록에서 선택"
             Button2.Text = "목록 새로고침"
-            Label2.Text = "선택됨"
+            GroupBox4.Text = "선택됨"
             Button4.Text = "취소"
             Button3.Text = "확인"
             If Label3.Text = "No file." Then
                 Label3.Text = "파일 선택 안함."
             End If
         Else
-            Me.Text = "Browse JSON"
+            Me.Text = "Browse"
             Button1.Text = "Browse file"
-            Label1.Text = "or
-Select from list : "
+            GroupBox1.Text = "Browse file"
+            GroupBox2.Text = "Indexes list"
             Button2.Text = "Reload list"
-            Label2.Text = "Selected : "
+            GroupBox4.Text = "Selected : "
             Button4.Text = "Cancel"
             Button3.Text = "Confirm"
             If Label3.Text = "파일 선택 안함." Then
@@ -134,5 +133,13 @@ Select from list : "
         If Not cfm Then
             Form1.cancel = True
         End If
+    End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs)
+
+    End Sub
+
+    Private Sub Panel1_DragDrop(sender As Object, e As DragEventArgs)
+
     End Sub
 End Class

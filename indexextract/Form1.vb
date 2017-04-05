@@ -11,6 +11,7 @@
     Dim ncp As Integer
     Public korean, mopen As Boolean
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        TextBox1.Visible = False
         If korean Then
             Label4.Text = "추출중"
         Else
@@ -78,9 +79,9 @@
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
         If korean Then
-            OpenFileDialog1.Title = "인덱스 찾아보기"
+            OpenFileDialog1.Title = "파일 찾아보기"
         Else
-            OpenFileDialog1.Title = "Select Index JSON"
+            OpenFileDialog1.Title = "Browse File"
         End If
 
 
@@ -91,20 +92,27 @@
         Button1.Enabled = True
         fullt = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
         If korean Then
-            TextBox1.Text = "불러옴 : " & OpenFileDialog1.FileName
+            TextBox1.Text = OpenFileDialog1.FileName & " 파일을 불러왔습니다."
         Else
-            TextBox1.Text = "Loaded : " & OpenFileDialog1.FileName
+            TextBox1.Text = "Successfully loaded " & OpenFileDialog1.FileName
         End If
         If mopen Then
             mopen = False
-            tbtdn.Enabled = True
+            Tbtdn.Enabled = True
         End If
         b = UBound(Split(fullt, "hash"))
-
+        Form2.Label3.Text = ""
+        Form2.ComboBox1.Text = ""
+        Form2.ComboBox1.SelectedItem = ""
+        If korean Then
+            Form2.Label3.Text = "파일 선택 안함."
+        Else
+            Form2.Label3.Text = "No file."
+        End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        If TextBox1.Text = "" Or TextBox1.Text = "찾아보기 버튼을 클릭하십시오." Then
+        If TextBox1.Text = "" Or TextBox1.Text = "'찾아보기' 버튼을 클릭하십시오." Then
             TextBox1.Text = "Click 'Browse' button."
         End If
         TextBox1.Font = New Font("Segoe UI", 9)
@@ -128,7 +136,7 @@
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         If TextBox1.Text = "" Or TextBox1.Text = "Click 'Browse' button." Then
-            TextBox1.Text = "찾아보기 버튼을 클릭하십시오."
+            TextBox1.Text = "'찾아보기' 버튼을 클릭하십시오."
         End If
         TextBox1.Font = New Font("맑은 고딕", 9)
         Label4.Font = New Font("맑은 고딕", 14.25)
@@ -153,9 +161,9 @@
         abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
         i = i + 1
         If korean Then
-            Label1.Text = "상태 : " & i & "/" & b
+            Label1.Text = "상태 : " & i & "/" & b & "(" & Int(i / b * 100) & "%" & ")"
         Else
-            Label1.Text = "Status : " & i & "/" & b
+            Label1.Text = "Status : " & i & "/" & b & "(" & Int(i / b * 100) & "%" & ")"
         End If
         Try
             file = Split(fullt, Chr(34))(a)
@@ -178,14 +186,14 @@
         cmp = cmp + 1
 aale:
         If korean Then
-            TextBox1.Text = vbCrLf & vbCrLf & vbCrLf & vbCrLf & "작업중 ::: 추출됨 : " & cmp & " | 오류(파일 없음) : " & ncp & " | 안내(이미 존재) : " & ale & " | 작업량 : " & cmp + ncp + ale
+            TextBox1.Text = vbCrLf & vbCrLf & vbCrLf & vbCrLf & "작업하고 있습니다. 현재 작업량 : " & Int(i / b * 100) & "%"
         Else
-            TextBox1.Text = vbCrLf & vbCrLf & vbCrLf & vbCrLf & "Processing ::: Extracted : " & cmp & " | Errored(No file) : " & ncp & " | Info(Already exists) : " & ale & " | Total : " & cmp + ncp + ale
+            TextBox1.Text = vbCrLf & vbCrLf & vbCrLf & vbCrLf & "Processing. Status : " & Int(i / b * 100) & "%"
         End If
         Exit Sub
 b:
-        '텍스트박스 숨기기(잠시)
-        TextBox1.Visible = False
+        '작업 완료후 코드
+        TextBox1.Visible = True
         '버튼 활성화
         Button2.Enabled = True
         Button1.Enabled = True
@@ -235,7 +243,7 @@ b:
         Button7.Top = Me.Height + 8
         mopen = True
         TextBox1.ScrollBars = ScrollBars.Vertical
-        tbtup.Enabled = True
+        Tbtup.Enabled = True
         Timer1.Enabled = False
         Button1.Enabled = False
         If korean Then
@@ -243,8 +251,6 @@ b:
         Else
             Label1.Text = "Status : ready"
         End If
-        '텍스트박스 보이기
-        TextBox1.Visible = True
         TextBox1.SelectionStart = Len(TextBox1.Text)
         TextBox1.ScrollToCaret()
         Exit Sub
@@ -256,7 +262,7 @@ b:
         Button6.Top = Me.Height - 74
         TextBox1.Height = Me.Height - 131
         TextBox1.Width = Me.Width - 40
-        Label4.Top = ((Me.Height / 2) - Label4.Height / 2) - Label3.Height / 5
+        Label4.Top = (Me.Height / 2) - Label4.Height / 2
         Label4.Left = (Me.Width / 2) - Label4.Width / 2
         Label3.Top = (Me.Height / 2) - Label3.Height / 2
         Label3.Left = (Me.Width / 2) - Label3.Width / 2
@@ -273,7 +279,7 @@ b:
         '폴더 열기
         Process.Start(Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0))
     End Sub
-    Private Sub dotdotdot_Tick(sender As Object, e As EventArgs) Handles dotdotdot.Tick
+    Private Sub Dotdotdot_Tick(sender As Object, e As EventArgs) Handles Dotdotdot.Tick
         Select Case Label3.Text
             Case "......."
                 Label3.Text = ""
@@ -299,11 +305,11 @@ b:
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        tbtdn.Enabled = True
+        Tbtdn.Enabled = True
         mopen = False
     End Sub
 
-    Private Sub tbtup_Tick(sender As Object, e As EventArgs) Handles tbtup.Tick
+    Private Sub Tbtup_Tick(sender As Object, e As EventArgs) Handles Tbtup.Tick
         'tbtup : 폴더 열기 버튼 올라옴
         Button5.Visible = True
         Button7.Visible = True
@@ -311,7 +317,7 @@ b:
             Button5.Top = Button5.Top - 4
             Button7.Top = Button7.Top - 4
         Else
-            tbtup.Enabled = False
+            Tbtup.Enabled = False
         End If
     End Sub
 
@@ -322,7 +328,7 @@ b:
             Else
                 Button6.Text = "Resume"
             End If
-            dotdotdot.Enabled = False
+            Dotdotdot.Enabled = False
             Label3.Text = "......."
             Timer1.Enabled = False
         ElseIf Button6.Text = "Resume" Or Button6.Text = "계속" Then
@@ -331,7 +337,7 @@ b:
             Else
                 Button6.Text = "Pasue"
             End If
-            dotdotdot.Enabled = True
+            Dotdotdot.Enabled = True
             Timer1.Enabled = True
         End If
     End Sub
@@ -352,15 +358,19 @@ b:
         End If
     End Sub
 
-    Private Sub tbtdn_Tick(sender As Object, e As EventArgs) Handles tbtdn.Tick
+    Private Sub Tbtdn_Tick(sender As Object, e As EventArgs) Handles Tbtdn.Tick
         'tbtdn : 폴더 열기 버튼 내려옴
         If Not Button5.Top >= Me.Height + 8 Then
             Button5.Top = Button5.Top + 4
             Button7.Top = Button7.Top + 4
         Else
-            tbtdn.Enabled = False
+            Tbtdn.Enabled = False
             Button5.Visible = False
             Button7.Visible = False
         End If
+    End Sub
+
+    Private Sub Form1_Click(sender As Object, e As EventArgs) Handles Me.Click
+        'MsgBox(korean)
     End Sub
 End Class
