@@ -87,10 +87,10 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("돋움", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI Emoji", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(341, 17)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(52, 12)
+        Me.Label1.Size = New System.Drawing.Size(48, 15)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Status : "
         '
@@ -191,6 +191,7 @@ Partial Class Form1
         '
         'Button6
         '
+        Me.Button6.Font = New System.Drawing.Font("Segoe UI Emoji", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button6.Location = New System.Drawing.Point(449, 358)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(123, 23)
@@ -216,7 +217,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 2.40.2 Pre"
+        Me.Text = "Index Extractor 2.40.3 Pre"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
