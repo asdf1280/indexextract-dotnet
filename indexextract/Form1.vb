@@ -1,4 +1,26 @@
 ﻿Public Class Form1
+    Dim ppp As String
+    Dim dev As String
+    Dim rel As String
+    Dim dl, rl As String
+    Function Upcheck(server As String)
+        Try
+            Dim c As New DataSet
+            c.ReadXml(server)
+            ppp = c.Tables(0).Rows(0).Item(0)
+            dev = c.Tables(0).Rows(0).Item(1)
+            rel = c.Tables(0).Rows(0).Item(2)
+            dl = c.Tables(0).Rows(0).Item(3)
+            rl = c.Tables(0).Rows(0).Item(4)
+        Catch ex As Exception
+            Return 1
+        End Try
+        Return 0
+    End Function
+
+
+
+
     Dim ale As Integer = 0
     Public fullt As String
     Dim abcd As Integer
@@ -9,15 +31,18 @@
     Public file As String
     Dim cmp As Integer
     Dim ncp As Integer
-    Public korean, mopen As Boolean
+    Public tng As Boolean = False
+    Public korean As Boolean
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        TextBox1.Visible = False
+        Button5.Enabled = True
+        Label7.Text = "0"
+        Label8.Text = "0"
+        Label10.Text = "0"
         If korean Then
             Label4.Text = "추출중"
         Else
             Label4.Text = "Extracting"
         End If
-        TextBox1.Text = ""
         i = 0
         a = 3
         cmp = 0
@@ -25,12 +50,14 @@
         ncp = 0
         Label4.Visible = True
         Label3.Visible = True
-        Button6.Visible = True
+        Button6.Enabled = True
         Button2.Enabled = False
         Button1.Enabled = False
         Button3.Enabled = False
         Button4.Enabled = False
+
         Timer1.Enabled = True
+        tng = True
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -73,7 +100,46 @@
             My.Computer.FileSystem.DeleteFile("c:\indexextract\lang.set")
             Application.Restart()
         End If
-        Form1_SizeChanged(sender, e)
+
+
+        Dim vvr As String
+        Upcheck("http://userapps.net/uc.xml")
+        If Not ppp = "indexextract" Then
+            MsgBox("Update server error")
+            End
+        End If
+        If Replace(Me.Text, "...", "") = Me.Text Then
+            vvr = rel
+        Else
+            vvr = dev
+        End If
+        If Not vvr = Me.Text Then
+            If vvr = dev Then
+                If korean Then
+                    MsgBox("업데이트가 존재합니다. 다운로드 링크로 이동합니다.(개발버전)")
+                    Process.Start(dl)
+                Else
+                    MsgBox("Update available. Starting download.(Dev)")
+                    Process.Start(dl)
+                End If
+            ElseIf vvr = rel Then
+                If korean Then
+                    MsgBox("업데이트가 존재합니다. 다운로드 링크로 이동합니다.(릴리즈)")
+                    Process.Start(rl)
+                Else
+                    MsgBox("Update available. Starting download.(Release)")
+                    Process.Start(rl)
+                End If
+            End If
+        End If
+
+        Me.MaximizeBox = False
+
+        If korean Then
+            Label4.Text = "작업 안함"
+        End If
+
+
     End Sub
     Public cancel As Boolean = False
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -91,16 +157,7 @@
         End If
         Button1.Enabled = True
         fullt = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
-        If korean Then
-            TextBox1.Text = OpenFileDialog1.FileName & " 파일을 불러왔습니다."
-        Else
-            TextBox1.Text = "Successfully loaded " & OpenFileDialog1.FileName
-        End If
-        If mopen Then
-            mopen = False
-            Tbtdn.Enabled = True
-        End If
-        b = UBound(Split(fullt, "hash"))
+        b = UBound(Split(fullt, "hash")) - 1
         Form2.Label3.Text = ""
         Form2.ComboBox1.Text = ""
         Form2.ComboBox1.SelectedItem = ""
@@ -112,83 +169,95 @@
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        If TextBox1.Text = "" Or TextBox1.Text = "'찾아보기' 버튼을 클릭하십시오." Then
-            TextBox1.Text = "Click 'Browse' button."
-        End If
+        Label1.Text = "After finish:"
+        CheckBox2.Text = "beep"
+
+        Label4.Text = "Change language"
+        Label3.Visible = True
+
         TextBox1.Font = New Font("Segoe UI", 9)
         Label4.Font = New Font("Segoe UI", 14.25)
         Button5.Font = New Font("Segoe UI", 18)
-        Button7.Font = New Font("Segoe UI", 36)
         Button2.Text = "Browse"
-        Button5.Text = "Open"
+        Button5.Text = "Open folder"
         Button1.Text = "Start"
-        Label1.Text = "Status : ready"
+        Label2.Text = "Warning   : "
         korean = False
-        Button6.Text = "Pause"
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=EN_US", False)
         '툴팁 설정
         infott.SetToolTip(Button2, "100% free!! Use it right now!")
+        '상태 표시 설정
+        Label9.Text = "Critical
+(No file)"
+        Label6.Text = "Info
+(already exists)"
+        Label11.Text = "Prefect"
 
-        '마무리 작업
-        Form1_SizeChanged(sender, e)
+        Label3.Visible = False
+        Label4.Text = "No task"
     End Sub
 
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        If TextBox1.Text = "" Or TextBox1.Text = "Click 'Browse' button." Then
-            TextBox1.Text = "'찾아보기' 버튼을 클릭하십시오."
-        End If
+        Label1.Text = "작업 완료후:"
+        CheckBox2.Text = "알림음 재생"
+
+        Label4.Text = "언어 변경"
+        Label3.Visible = True
+
         TextBox1.Font = New Font("맑은 고딕", 9)
         Label4.Font = New Font("맑은 고딕", 14.25)
-        Button5.Font = New Font("바탕", 18)
-        Button7.Font = New Font("맑은 고딕", 36)
+        Button5.Font = New Font("맑은 고딕", 18)
         Button2.Text = "찾아보기"
         Button1.Text = "시작"
+
         Button5.Text = "폴더 열기"
-        Label1.Text = "상태 : 준비"
+        Label2.Text = "경고         :"
         korean = True
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=KO_KR", False)
-        Button6.Text = "일시 정지"
         '툴팁 설정
         infott.SetToolTip(Button2, "100% 무료입니다!! 지금 바로 추출해보세요!")
+        '상태 표시 설정
+        Label9.Text = "오류
+(파일 없음)"
+        Label6.Text = "정보
+(이미 추출됨)"
+        Label11.Text = "완벽함"
 
-        '마무리 작업
-        Form1_SizeChanged(sender, e)
+        Label3.Visible = False
+        Label4.Text = "작업 안함"
     End Sub
 
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
         i = i + 1
-        If korean Then
-            Label1.Text = "상태 : " & i & "/" & b & "(" & Int(i / b * 100) & "%" & ")"
-        Else
-            Label1.Text = "Status : " & i & "/" & b & "(" & Int(i / b * 100) & "%" & ")"
-        End If
         Try
             file = Split(fullt, Chr(34))(a)
-            a = a + 4
-            hash = Split(fullt, Chr(34))(a)
-            a = a + 4
+            hash = Split(fullt, Chr(34))(a + 4)
+            a = a + 8
         Catch ex As System.IndexOutOfRangeException
             GoTo b
         End Try
         If My.Computer.FileSystem.FileExists("indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file) Then
             ale = ale + 1
+            Label7.Text = ale
             GoTo aale
         End If
         Try
             My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file, True)
         Catch ex As System.IO.FileNotFoundException
             ncp = ncp + 1
+            Label8.Text = ncp
             GoTo aale
         End Try
+        Label10.Text = cmp
         cmp = cmp + 1
 aale:
         If korean Then
-            TextBox1.Text = vbCrLf & vbCrLf & vbCrLf & vbCrLf & "작업하고 있습니다. 현재 작업량 : " & Int(i / b * 100) & "%"
+            Label4.Text = "추출중" & vbCrLf & Int(i / b * 100) & "%"
         Else
-            TextBox1.Text = vbCrLf & vbCrLf & vbCrLf & vbCrLf & "Processing. Status : " & Int(i / b * 100) & "%"
+            Label4.Text = "Extracting" & vbCrLf & Int(i / b * 100) & "%"
         End If
         Exit Sub
 b:
@@ -201,83 +270,74 @@ b:
         Button4.Enabled = True
         TextBox1.Text = vbCrLf & vbCrLf & vbCrLf & vbCrLf & vbCrLf
         Label3.Visible = False
-        Label4.Visible = False
         Dim iii As Integer
         For iii = 0 To 5
             TextBox1.Text = TextBox1.Text & vbCrLf
         Next
         If korean Then
-            TextBox1.Text = TextBox1.Text & vbCrLf & "완료 : " & Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\... 에 저장되었습니다."
-            TextBox1.Text = vbCrLf & vbCrLf & vbCrLf & vbCrLf & "추출됨 : " & cmp & " | 오류(파일 없음) : " & ncp & " | 안내(이미 존재) : " & ale & " | 작업량 : " & cmp + ncp + ale
             If ale > 0 Then
-                TextBox1.Text = TextBox1.Text & vbCrLf & "[경고]이미 존재하는 파일이 몇 개 있어서 건너뛰었습니다." & vbCrLf & "두 파일간에 차이점이 있을 수 있으니, 기존 폴더를 삭제하고 다시 작업하는 것을 권장합니다.(폴더 열기를 사용하십시오.)"
+                TextBox1.Text = "[경고]이미 존재하는 파일이 " & ale & "개 있어서 건너뛰었습니다." & vbCrLf & "두 파일간에 차이점이 있을 수 있으니, 기존 폴더를 삭제하고 다시 작업하는 것을 권장합니다.(폴더 열기를 사용하십시오.)"
             End If
             If ncp > 0 Then
-                TextBox1.Text = TextBox1.Text & vbCrLf & "[경고]마인크래프트 폴더상에 찾을 수 없는 파일들이 몇몇 있어서 건너뛰었습니다." & vbCrLf & "해당 버전의 마인크래프트를 실행한 뒤 다시 작업하는 것을 권장합니다."
+                TextBox1.Text = TextBox1.Text & vbCrLf & "[경고]마인크래프트 폴더상에 찾을 수 없는 파일들이 " & ncp & "개 있어서 건너뛰었습니다." & vbCrLf & "해당 버전의 마인크래프트를 실행한 뒤 다시 작업하는 것을 권장합니다."
             End If
             If Not cmp + ncp + ale = cmp Then
                 TextBox1.Text = TextBox1.Text & vbCrLf & "[안내]모든 파일이 완벽하게 추출되지 않았습니다. 위 내용을 참고하세요."
             End If
         Else
-            TextBox1.Text = TextBox1.Text & vbCrLf & "Complete : " & Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\... 에 저장되었습니다."
-            TextBox1.Text = vbCrLf & vbCrLf & vbCrLf & vbCrLf & "Extracted : " & cmp & " | Errored(No file) : " & ncp & " | Info(Already exists) : " & ale & " | Total : " & cmp + ncp + ale
             If ale > 0 Then
-                TextBox1.Text = TextBox1.Text & vbCrLf & "[WARNING]Some files was already exists and I skipped them." & vbCrLf & "They may have a different, and we recommend to remove old directory and run this tool again.(Use 'Open' button.)"
+                TextBox1.Text = "[WARNING]" & ale & " files was already exists and I skipped them." & vbCrLf & "They may have a different, and we recommend to remove old directory and run this tool again.(Use 'Open' button.)"
             End If
             If ncp > 0 Then
-                TextBox1.Text = TextBox1.Text & vbCrLf & "[WARNING]Some files does not exist in Minecraft directory. I skipped them." & vbCrLf & "It is recommend that you execute the corresponding version of the Minecraft and then run this tool again."
+                TextBox1.Text = TextBox1.Text & vbCrLf & "[WARNING]" & ncp & " files does not exist in Minecraft directory. I skipped them." & vbCrLf & "It is recommend that you execute the corresponding version of the Minecraft and then run this tool again."
             End If
             If Not cmp + ncp + ale = cmp Then
                 TextBox1.Text = TextBox1.Text & vbCrLf & "[INFO]Some files were not extracted fully. Please refer to the above."
             End If
         End If
-        TextBox1.SelectionStart = Len(TextBox1.Text)
-        TextBox1.ScrollToCaret()
-        For iii = 0 To 5
-            TextBox1.Text = TextBox1.Text & vbCrLf
-        Next
-        Button5.Visible = True
-        Button7.Visible = True
-        Button6.Visible = False
-        Button5.Top = Me.Height + 8
-        Button7.Top = Me.Height + 8
-        mopen = True
+        Dim wn As Integer = 0
+        If ale > 0 Then
+            If CheckBox2.Checked Then
+                For i = 0 To 4
+                    Console.Beep()
+                Next
+                Threading.Thread.Sleep(500)
+            End If
+            wn = wn + 1
+        End If
+        If ncp > 0 Then
+            If CheckBox2.Checked Then
+                For i = 0 To 6
+                    Console.Beep()
+                Next
+                Threading.Thread.Sleep(500)
+            End If
+            wn = wn + 1
+        End If
+        Label5.Text = "( " & wn & " )"
+
+        Button6.Enabled = False
         TextBox1.ScrollBars = ScrollBars.Vertical
-        Tbtup.Enabled = True
         Timer1.Enabled = False
         Button1.Enabled = False
-        If korean Then
-            Label1.Text = "상태 : 준비"
-        Else
-            Label1.Text = "Status : ready"
+        If CheckBox2.Checked Then
+
+            Dim v As Integer
+            For v = 1 To 10
+                Console.Beep()
+            Next
         End If
-        TextBox1.SelectionStart = Len(TextBox1.Text)
-        TextBox1.ScrollToCaret()
-        Exit Sub
-    End Sub
-    Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles Me.SizeChanged
-        Button3.Top = Me.Size.Height - 74
-        Button4.Top = Me.Size.Height - 74
-        Button6.Left = Me.Width - 151
-        Button6.Top = Me.Height - 74
-        TextBox1.Height = Me.Height - 131
-        TextBox1.Width = Me.Width - 40
-        Label4.Top = (Me.Height / 2) - Label4.Height / 2
-        Label4.Left = (Me.Width / 2) - Label4.Width / 2
-        Label3.Top = (Me.Height / 2) - Label3.Height / 2
-        Label3.Left = (Me.Width / 2) - Label3.Width / 2
-
-        'Button5.Left = Me.Width - 588
-        Button5.Top = Me.Height - 160
-        Button5.Width = Me.Width - 134
-
-        'Button7 폴더 열기 메뉴 닫기버튼
-        Button7.Top = Me.Height - 160
-        Button7.Left = Me.Width - 116
+        ale = 0
+        cmp = 0
+        ncp = 0
     End Sub
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         '폴더 열기
-        Process.Start(Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0))
+        Try
+            Process.Start(Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0))
+        Catch ex As System.ComponentModel.Win32Exception
+            Process.Start(Application.StartupPath)
+        End Try
     End Sub
     Private Sub Dotdotdot_Tick(sender As Object, e As EventArgs) Handles Dotdotdot.Tick
         Select Case Label3.Text
@@ -300,50 +360,22 @@ b:
         End Select
     End Sub
 
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-
-    End Sub
-
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        Tbtdn.Enabled = True
-        mopen = False
-    End Sub
-
-    Private Sub Tbtup_Tick(sender As Object, e As EventArgs) Handles Tbtup.Tick
-        'tbtup : 폴더 열기 버튼 올라옴
-        Button5.Visible = True
-        Button7.Visible = True
-        If Not Button5.Top <= Me.Height - 160 Then
-            Button5.Top = Button5.Top - 4
-            Button7.Top = Button7.Top - 4
-        Else
-            Tbtup.Enabled = False
-        End If
-    End Sub
-
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        If Button6.Text = "Pause" Or Button6.Text = "일시 정지" Then
-            If korean Then
-                Button6.Text = "계속"
-            Else
-                Button6.Text = "Resume"
-            End If
+        If Button6.Text = "┃┃" Then
+            Button6.Text = "▶"
             Dotdotdot.Enabled = False
             Label3.Text = "......."
             Timer1.Enabled = False
-        ElseIf Button6.Text = "Resume" Or Button6.Text = "계속" Then
-            If korean Then
-                Button6.Text = "일시 정지"
-            Else
-                Button6.Text = "Pasue"
-            End If
+        ElseIf Button6.Text = "▶" Then
+            Button6.Text = "┃┃"
             Dotdotdot.Enabled = True
             Timer1.Enabled = True
         End If
     End Sub
+
     Public cntt As Integer = 0
     Public acntt As Boolean = False
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    Private Sub Label1_Click(sender As Object, e As EventArgs)
         If acntt Then
             MsgBox("Language option already enabled for '" & System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag & "' User", vbInformation)
             Exit Sub
@@ -356,21 +388,5 @@ b:
         Else
             cntt = cntt + 1
         End If
-    End Sub
-
-    Private Sub Tbtdn_Tick(sender As Object, e As EventArgs) Handles Tbtdn.Tick
-        'tbtdn : 폴더 열기 버튼 내려옴
-        If Not Button5.Top >= Me.Height + 8 Then
-            Button5.Top = Button5.Top + 4
-            Button7.Top = Button7.Top + 4
-        Else
-            Tbtdn.Enabled = False
-            Button5.Visible = False
-            Button7.Visible = False
-        End If
-    End Sub
-
-    Private Sub Form1_Click(sender As Object, e As EventArgs) Handles Me.Click
-        'MsgBox(korean)
     End Sub
 End Class

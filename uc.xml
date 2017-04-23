@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <update>
  <project>indexextract</project>
- <dev>Index Extractor 3.0...1</dev>
- <rel>Index Extractor 3.0</rel>
+ <dev>Index Extractor 3.0...2</dev>
+ <rel>Index Extractor 2.40</rel>
+ <dl>explorer</dl>
+ <rl>explorer</rl>
 </update>

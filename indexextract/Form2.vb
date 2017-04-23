@@ -3,10 +3,15 @@
 Public Class Form2
     Dim cfm As Boolean = False
     Public sp As String = "legacy.json   1.7.10.json   1.8.json   1.9.json 1.9-aprilfools.json   1.10.json   1.11.json   1.12.json"
+    Public sz As String = ""
     Public Function Fds()
         For Each foundFile As String In My.Computer.FileSystem.GetFiles(
           "c:\Users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\indexes")
-
+            Dim it As String
+            it = Split(foundFile, "\")(UBound(Split(foundFile, "\")))
+            If Replace(sp, it, "") = sp Then
+                Continue For
+            End If
             ComboBox1.Items.Add(Split(foundFile, "\")(UBound(Split(foundFile, "\"))))
         Next
         Return 1

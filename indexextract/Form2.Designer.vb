@@ -152,6 +152,7 @@ Partial Class Form2
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.MaximizeBox = False
         Me.Name = "Form2"
         Me.Text = "Browse JSON"
         Me.GroupBox1.ResumeLayout(False)
