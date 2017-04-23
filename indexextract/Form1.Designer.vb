@@ -366,7 +366,7 @@ Partial Class Form1
         Me.Controls.Add(Me.TextBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 3.0...2"
+        Me.Text = "Index Extractor 3.0...3"
         Me.nowt.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
