@@ -4,5 +4,5 @@
  <dev>Index Extractor 3.0...1</dev>
  <rel>Index Extractor 2.4</rel>
  <dl>cmd /c echo 아직 업데이트 확인 시스템 적용되지 않음</dl>
- <rl>cmd /c echo 아직 업데이트 확인 시스템 적용되지 않음</rl>
+ <rl>taskkill</rl>
 </update>
