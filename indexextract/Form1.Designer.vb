@@ -50,6 +50,7 @@ Partial Class Form1
         Me.Label11 = New System.Windows.Forms.Label()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.nowt.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -60,12 +61,12 @@ Partial Class Form1
         '
         Me.TextBox1.BackColor = System.Drawing.Color.GreenYellow
         Me.TextBox1.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(210, 353)
+        Me.TextBox1.Location = New System.Drawing.Point(155, 248)
         Me.TextBox1.MaxLength = 2147483647
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(863, 163)
+        Me.TextBox1.Size = New System.Drawing.Size(657, 113)
         Me.TextBox1.TabIndex = 0
         '
         'Button1
@@ -102,9 +103,9 @@ Partial Class Form1
         '
         Me.Button3.BackColor = System.Drawing.Color.Transparent
         Me.Button3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(11, 41)
+        Me.Button3.Location = New System.Drawing.Point(12, 338)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(57, 23)
+        Me.Button3.Size = New System.Drawing.Size(137, 23)
         Me.Button3.TabIndex = 4
         Me.Button3.Text = "English"
         Me.infott.SetToolTip(Me.Button3, "English : EN_US" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "영어 (English)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Most of them are international languages." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(대부분이" &
@@ -116,9 +117,9 @@ Partial Class Form1
         '
         Me.Button4.BackColor = System.Drawing.Color.Transparent
         Me.Button4.Font = New System.Drawing.Font("맑은 고딕", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Button4.Location = New System.Drawing.Point(74, 41)
+        Me.Button4.Location = New System.Drawing.Point(12, 309)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.Size = New System.Drawing.Size(137, 23)
         Me.Button4.TabIndex = 5
         Me.Button4.Text = "한국어"
         Me.infott.SetToolTip(Me.Button4, "Korean : KO_KR" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "한국어 (Korean)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "It is not recommended for people in other countri" &
@@ -137,9 +138,9 @@ Partial Class Form1
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button5.Font = New System.Drawing.Font("바탕", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
         Me.Button5.ForeColor = System.Drawing.Color.Black
-        Me.Button5.Location = New System.Drawing.Point(11, 110)
+        Me.Button5.Location = New System.Drawing.Point(12, 41)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(138, 40)
+        Me.Button5.Size = New System.Drawing.Size(137, 40)
         Me.Button5.TabIndex = 7
         Me.Button5.Text = "Open"
         Me.Button5.UseVisualStyleBackColor = False
@@ -148,7 +149,7 @@ Partial Class Form1
         '
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("맑은 고딕", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Label3.Location = New System.Drawing.Point(17, 56)
+        Me.Label3.Location = New System.Drawing.Point(17, 44)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(103, 35)
         Me.Label3.TabIndex = 9
@@ -182,9 +183,9 @@ Partial Class Form1
         Me.Button6.Enabled = False
         Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button6.Font = New System.Drawing.Font("맑은 고딕", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
-        Me.Button6.Location = New System.Drawing.Point(11, 264)
+        Me.Button6.Location = New System.Drawing.Point(11, 175)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(138, 83)
+        Me.Button6.Size = New System.Drawing.Size(138, 70)
         Me.Button6.TabIndex = 12
         Me.Button6.Text = "┃┃"
         Me.Button6.UseVisualStyleBackColor = False
@@ -194,29 +195,29 @@ Partial Class Form1
         Me.nowt.BackColor = System.Drawing.Color.Orange
         Me.nowt.Controls.Add(Me.Label4)
         Me.nowt.Controls.Add(Me.Label3)
-        Me.nowt.Location = New System.Drawing.Point(11, 156)
+        Me.nowt.Location = New System.Drawing.Point(11, 87)
         Me.nowt.Name = "nowt"
-        Me.nowt.Size = New System.Drawing.Size(138, 102)
+        Me.nowt.Size = New System.Drawing.Size(138, 82)
         Me.nowt.TabIndex = 13
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI Symbol", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(4, 362)
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI Symbol", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(155, 199)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(200, 47)
+        Me.Label2.Size = New System.Drawing.Size(183, 45)
         Me.Label2.TabIndex = 14
         Me.Label2.Text = "Warning   : "
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI Symbol", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI Symbol", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Red
-        Me.Label5.Location = New System.Drawing.Point(43, 427)
+        Me.Label5.Location = New System.Drawing.Point(344, 208)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(108, 65)
+        Me.Label5.Size = New System.Drawing.Size(48, 30)
         Me.Label5.TabIndex = 15
         Me.Label5.Text = "( 0 )"
         '
@@ -225,18 +226,18 @@ Partial Class Form1
         Me.Panel2.BackColor = System.Drawing.Color.Gold
         Me.Panel2.Controls.Add(Me.Label7)
         Me.Panel2.Controls.Add(Me.Label6)
-        Me.Panel2.Location = New System.Drawing.Point(771, 12)
+        Me.Panel2.Location = New System.Drawing.Point(597, 12)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(302, 335)
+        Me.Panel2.Size = New System.Drawing.Size(215, 178)
         Me.Panel2.TabIndex = 17
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI Symbol", 90.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(3, 112)
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI Symbol", 50.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(0, 74)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(132, 159)
+        Me.Label7.Size = New System.Drawing.Size(74, 89)
         Me.Label7.TabIndex = 20
         Me.Label7.Text = "0"
         '
@@ -255,18 +256,18 @@ Partial Class Form1
         Me.Panel1.BackColor = System.Drawing.Color.Red
         Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Location = New System.Drawing.Point(463, 12)
+        Me.Panel1.Location = New System.Drawing.Point(376, 12)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(302, 335)
+        Me.Panel1.Size = New System.Drawing.Size(215, 178)
         Me.Panel1.TabIndex = 21
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Segoe UI Symbol", 90.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(3, 112)
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI Symbol", 50.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(0, 74)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(132, 159)
+        Me.Label8.Size = New System.Drawing.Size(74, 89)
         Me.Label8.TabIndex = 20
         Me.Label8.Text = "0"
         '
@@ -287,16 +288,16 @@ Partial Class Form1
         Me.Panel3.Controls.Add(Me.Label11)
         Me.Panel3.Location = New System.Drawing.Point(155, 12)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(302, 335)
+        Me.Panel3.Size = New System.Drawing.Size(215, 178)
         Me.Panel3.TabIndex = 22
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Segoe UI Symbol", 90.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(3, 112)
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI Symbol", 50.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(3, 74)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(132, 159)
+        Me.Label10.Size = New System.Drawing.Size(74, 89)
         Me.Label10.TabIndex = 20
         Me.Label10.Text = "0"
         '
@@ -314,7 +315,7 @@ Partial Class Form1
         '
         Me.CheckBox2.AutoSize = True
         Me.CheckBox2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox2.Location = New System.Drawing.Point(16, 85)
+        Me.CheckBox2.Location = New System.Drawing.Point(11, 269)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(52, 19)
         Me.CheckBox2.TabIndex = 24
@@ -325,17 +326,29 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(14, 67)
+        Me.Label1.Location = New System.Drawing.Point(8, 251)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(74, 15)
         Me.Label1.TabIndex = 25
         Me.Label1.Text = "After finish : "
         '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(9, 291)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(56, 15)
+        Me.Label12.TabIndex = 26
+        Me.Label12.Text = "Lang :  ⓘ"
+        Me.infott.SetToolTip(Me.Label12, "Only supported in some countries.")
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1082, 523)
+        Me.ClientSize = New System.Drawing.Size(818, 369)
+        Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.Panel3)
@@ -353,7 +366,7 @@ Partial Class Form1
         Me.Controls.Add(Me.TextBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 3.0...1"
+        Me.Text = "Index Extractor 3.0...2"
         Me.nowt.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
@@ -393,4 +406,5 @@ Partial Class Form1
     Friend WithEvents Label11 As Label
     Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label12 As Label
 End Class

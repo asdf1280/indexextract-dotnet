@@ -3,6 +3,6 @@
  <project>indexextract</project>
  <dev>Index Extractor 3.0...1</dev>
  <rel>Index Extractor 2.4</rel>
- <dl>https://github.com/dhkim0800/indexextract/releases/latest</dl>
- <rl>taskkill</rl>
+ <dl>https://github.com/dhkim0800/indexextract/releases/tag/3.0b2</dl>
+ <rl>https://github.com/dhkim0800/indexextract/releases/latest</rl>
 </update>

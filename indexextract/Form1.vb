@@ -170,6 +170,7 @@
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Label1.Text = "After finish:"
+        Label12.Text = "Lang :  ⓘ"
         CheckBox2.Text = "beep"
 
         Label4.Text = "Change language"
@@ -186,6 +187,7 @@
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=EN_US", False)
         '툴팁 설정
         infott.SetToolTip(Button2, "100% free!! Use it right now!")
+        infott.SetToolTip(Label12, "Only supported in some countries.")
         '상태 표시 설정
         Label9.Text = "Critical
 (No file)"
@@ -200,6 +202,7 @@
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Label1.Text = "작업 완료후:"
+        Label12.Text = "언어 :  ⓘ"
         CheckBox2.Text = "알림음 재생"
 
         Label4.Text = "언어 변경"
@@ -217,6 +220,7 @@
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=KO_KR", False)
         '툴팁 설정
         infott.SetToolTip(Button2, "100% 무료입니다!! 지금 바로 추출해보세요!")
+        infott.SetToolTip(Label12, "한국 윈도우 사용자에게만 지원되는 기능입니다.")
         '상태 표시 설정
         Label9.Text = "오류
 (파일 없음)"
