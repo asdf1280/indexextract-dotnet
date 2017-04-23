@@ -103,7 +103,7 @@
 
 
         Dim vvr As String
-        Upcheck("http://userapps.net/uc.xml")
+        Upcheck("https://raw.githubusercontent.com/dhkim0800/indexextract/master/uc.xml")
         If Not ppp = "indexextract" Then
             MsgBox("Update server error")
             End
