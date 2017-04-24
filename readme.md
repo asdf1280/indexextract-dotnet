@@ -1,39 +1,34 @@
------------------indexextract-----------------
+M I N E C R A F T
 
------------minecraft index extractor----------
+INDEX   EXTRACTOR
 
------------마인크래프트 인덱스 추출기-----------
+USE     IT    NOW
 
+FOR RESOURCE PACK
 
-
-한국어 설명
-
-Indexextract 는 마인크래프트 인덱스 파일을 추출하는 프로그램입니다.
-
-이 프로그램을 빠르고 작동하는 편리한 프로그램이며 많은 운영체제
-
-(윈도우 10, 8, 7) 등을 지원합니다.
+C  R E A T O R  S
 
 
-파일은 indexextract\bin\debug\indexextract.exe 입니다.
+This is an beautiful working Minecraft index extract program.
 
+If you are using this program, you can easily extract the Minecraft index.
 
-사용 방법---------
+The index is usually stored in an '.minecraft/assets/indexes'.
 
-우선 indexextract.exe 를 실행합니다.
+You can easily extract the index would use this program.
 
-그리고 찾아보기를 클릭합니다.
+Step by Step : How to use this software---
 
-마인크래프트 index 파일 중 하나를 클릭합니다.
+Step 1 : Open the program
 
-모든 파일이 존재하지 않는다면(index 파일을 남기고 objects 파일을 삭제할경우)
+Step 2 : Click 'browse' button
 
-해당 버전의 마인크래프트를 다시 실행할때까지는 해당 버전에서
+Step 3 : Select version from list or browse file.
 
-추출할 수 없습니다.
+Step 4 : Click 'confirm'
 
-영어 설명은 없습니다.
+Step 5 : Click 'start'
 
-no english yet. :D:D:D
+Step 6 : When it finish. click 'browse' button.
 
-Thank you.
+Good job. You're done.
