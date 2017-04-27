@@ -114,29 +114,16 @@
             vvr = dev
         End If
         If Not vvr = Me.Text Then
-            If vvr = dev Then
-                If korean Then
-                    MsgBox("업데이트가 존재합니다. 다운로드 링크로 이동합니다.(개발버전)")
-                    Process.Start(dl)
-                Else
-                    MsgBox("Update available. Starting download.(Dev)")
-                    Process.Start(dl)
-                End If
-            ElseIf vvr = rel Then
-                If korean Then
-                    MsgBox("업데이트가 존재합니다. 다운로드 링크로 이동합니다.(릴리즈)")
-                    Process.Start(rl)
-                Else
-                    MsgBox("Update available. Starting download.(Release)")
-                    Process.Start(rl)
-                End If
-            End If
+            Label13.Visible = True
+            Button7.Visible = True
         End If
 
         Me.MaximizeBox = False
 
         If korean Then
-            Label4.Text = "작업 안함"
+            Label4.Text = "대기"
+        Else
+            Label4.Text = "Ready"
         End If
 
 
@@ -165,6 +152,19 @@
             Form2.Label3.Text = "파일 선택 안함."
         Else
             Form2.Label3.Text = "No file."
+        End If
+        Dim o As Integer
+        o = UBound(Split(OpenFileDialog1.FileName, "\"))
+        If My.Computer.FileSystem.DirectoryExists("indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(o), ".json")(0)) Then
+            Dim y
+            If korean Then
+                y = MsgBox("추출하려고 하는 내용이 이미 존재하는것 같습니다." & "게임 업데이트로 인해서 내용이 변경될 수도 있습니다." & "삭제하고 진행하시겠습니까? (권장)", vbYesNo, "IndexExtract")
+            Else
+                y = MsgBox("Some extract results are already exists." & "When Minecraft is updated, these files may change." & "Do you want to delete and extract it again? (Recommended)", vbYesNo, "IndexExtract")
+            End If
+            If y = vbYes Then
+                My.Computer.FileSystem.DeleteDirectory("indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(o), ".json")(0), FileIO.DeleteDirectoryOption.DeleteAllContents)
+            End If
         End If
     End Sub
 
@@ -196,7 +196,10 @@
         Label11.Text = "Prefect"
 
         Label3.Visible = False
-        Label4.Text = "No task"
+        Label4.Text = "Ready"
+
+        Label13.Text = "An update available."
+        Button7.Text = "Update now"
     End Sub
 
 
@@ -229,7 +232,10 @@
         Label11.Text = "완벽함"
 
         Label3.Visible = False
-        Label4.Text = "작업 안함"
+        Label4.Text = "대기"
+
+        Label13.Text = "업데이트가 존재합니다."
+        Button7.Text = "업데이트하기"
     End Sub
 
 
@@ -334,6 +340,12 @@ b:
         ale = 0
         cmp = 0
         ncp = 0
+        If korean Then
+            Label4.Text = "대기"
+        Else
+            Label4.Text = "Ready"
+        End If
+
     End Sub
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         '폴더 열기
@@ -379,6 +391,21 @@ b:
 
     Public cntt As Integer = 0
     Public acntt As Boolean = False
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        Dim vvr As String
+        If Replace(Me.Text, "...", "") = Me.Text Then
+            vvr = rel
+        Else
+            vvr = dev
+        End If
+        If vvr = dev Then
+            Process.Start(dl)
+        ElseIf vvr = rel Then
+            Process.Start(rl)
+        End If
+    End Sub
+
     Private Sub Label1_Click(sender As Object, e As EventArgs)
         If acntt Then
             MsgBox("Language option already enabled for '" & System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag & "' User", vbInformation)

@@ -35,6 +35,7 @@ Partial Class Form1
         Me.Dotdotdot = New System.Windows.Forms.Timer(Me.components)
         Me.Label4 = New System.Windows.Forms.Label()
         Me.infott = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.nowt = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -50,7 +51,8 @@ Partial Class Form1
         Me.Label11 = New System.Windows.Forms.Label()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.nowt.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -176,6 +178,17 @@ Partial Class Form1
         'infott
         '
         Me.infott.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(9, 291)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(56, 15)
+        Me.Label12.TabIndex = 26
+        Me.Label12.Text = "Lang :  ⓘ"
+        Me.infott.SetToolTip(Me.Label12, "Only supported in some countries.")
         '
         'Button6
         '
@@ -332,22 +345,35 @@ Partial Class Form1
         Me.Label1.TabIndex = 25
         Me.Label1.Text = "After finish : "
         '
-        'Label12
+        'Label13
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(9, 291)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(56, 15)
-        Me.Label12.TabIndex = 26
-        Me.Label12.Text = "Lang :  ⓘ"
-        Me.infott.SetToolTip(Me.Label12, "Only supported in some countries.")
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Segoe UI Symbol", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(557, 220)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(114, 15)
+        Me.Label13.TabIndex = 27
+        Me.Label13.Text = "An update available."
+        Me.Label13.Visible = False
+        '
+        'Button7
+        '
+        Me.Button7.Font = New System.Drawing.Font("Segoe UI Symbol", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button7.Location = New System.Drawing.Point(714, 216)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(98, 23)
+        Me.Button7.TabIndex = 28
+        Me.Button7.Text = "Update now"
+        Me.Button7.UseVisualStyleBackColor = True
+        Me.Button7.Visible = False
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(818, 369)
+        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CheckBox2)
@@ -407,4 +433,6 @@ Partial Class Form1
     Friend WithEvents CheckBox2 As CheckBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label12 As Label
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Button7 As Button
 End Class
