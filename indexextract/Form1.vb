@@ -406,12 +406,12 @@ b:
             vvr = dev
         End If
         If My.Computer.Network.Ping("cdn.userapps.net") Then
-            My.Computer.Network.DownloadFile("http://cdn.userapps.net/indexextract/update/auto.exe", "ieup.exe")
+            My.Computer.Network.DownloadFile("http://cdn.userapps.net/indexextract/update/ieup.exe", "ieup.exe")
             If vvr = dev Then
-                My.Computer.FileSystem.WriteAllText("ieu.txt", "http://cdn.userapps.net/indexextract/update/ldev.exe", False)
+                My.Computer.FileSystem.WriteAllText("ieu.txt", "http://cdn.userapps.net/indexextract/update/dev/indexextract.exe", False)
                 My.Computer.FileSystem.WriteAllText("iel.txt", Application.ExecutablePath, False)
             ElseIf vvr = rel Then
-                My.Computer.FileSystem.WriteAllText("ieu.txt", "http://cdn.userapps.net/indexextract/update/lrel.exe", False)
+                My.Computer.FileSystem.WriteAllText("ieu.txt", "http://cdn.userapps.net/indexextract/update/rel/indexextract.exe", False)
                 My.Computer.FileSystem.WriteAllText("iel.txt", Application.ExecutablePath, False)
             End If
             My.Computer.FileSystem.WriteAllText("iee.txt", IO.Path.GetFileName(Application.ExecutablePath), False)
