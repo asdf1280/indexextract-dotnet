@@ -364,6 +364,7 @@ Partial Class Form1
         Me.Button7.Size = New System.Drawing.Size(98, 23)
         Me.Button7.TabIndex = 28
         Me.Button7.Text = "Update now"
+        Me.infott.SetToolTip(Me.Button7, "안내 : CDN 서버에 연결할 수 있을때는 자동 업데이트를 실시합니다.")
         Me.Button7.UseVisualStyleBackColor = True
         Me.Button7.Visible = False
         '
@@ -392,7 +393,7 @@ Partial Class Form1
         Me.Controls.Add(Me.TextBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 3.0...3"
+        Me.Text = "Index Extractor 3.0...4"
         Me.nowt.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()

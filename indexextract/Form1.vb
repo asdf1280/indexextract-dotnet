@@ -61,6 +61,10 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If My.Computer.FileSystem.FileExists("ieup.exe") Then
+            My.Computer.FileSystem.DeleteFile("ieup.exe")
+        End If
+
         '언어설정은 한국인만 받아요
         If Not System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag = "ko-KR" Then
             Button4.Visible = False
@@ -188,6 +192,7 @@
         '툴팁 설정
         infott.SetToolTip(Button2, "100% free!! Use it right now!")
         infott.SetToolTip(Label12, "Only supported in some countries.")
+        infott.SetToolTip(Button7, "Info : When connecting to the CDN server, perform automatic updates.")
         '상태 표시 설정
         Label9.Text = "Critical
 (No file)"
@@ -224,6 +229,7 @@
         '툴팁 설정
         infott.SetToolTip(Button2, "100% 무료입니다!! 지금 바로 추출해보세요!")
         infott.SetToolTip(Label12, "한국 윈도우 사용자에게만 지원되는 기능입니다.")
+        infott.SetToolTip(Button7, "안내 : CDN 서버에 연결할 수 있을때는 자동 업데이트를 실시합니다.")
         '상태 표시 설정
         Label9.Text = "오류
 (파일 없음)"
@@ -399,11 +405,25 @@ b:
         Else
             vvr = dev
         End If
-        If vvr = dev Then
-            Process.Start(dl)
-        ElseIf vvr = rel Then
-            Process.Start(rl)
+        If My.Computer.Network.Ping("cdn.userapps.net") Then
+            My.Computer.Network.DownloadFile("http://cdn.userapps.net/indexextract/update/auto.exe", "ieup.exe")
+            If vvr = dev Then
+                My.Computer.FileSystem.WriteAllText("ieu.txt", "http://cdn.userapps.net/indexextract/update/ldev.exe", False)
+                My.Computer.FileSystem.WriteAllText("iel.txt", Application.ExecutablePath, False)
+            ElseIf vvr = rel Then
+                My.Computer.FileSystem.WriteAllText("ieu.txt", "http://cdn.userapps.net/indexextract/update/lrel.exe", False)
+                My.Computer.FileSystem.WriteAllText("iel.txt", Application.ExecutablePath, False)
+            End If
+            My.Computer.FileSystem.WriteAllText("iee.txt", IO.Path.GetFileName(Application.ExecutablePath), False)
+            Process.Start("ieup.exe")
+        Else
+            If vvr = dev Then
+                Process.Start(dl)
+            ElseIf vvr = rel Then
+                Process.Start(rl)
+            End If
         End If
+
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs)
