@@ -400,13 +400,10 @@ b:
             vvr = dev
         End If
         If vvr = dev Then
-            My.Computer.FileSystem.WriteAllText("ieu.txt", dl, False)
-            My.Computer.FileSystem.WriteAllText("iel.txt", Application.ExecutablePath, False)
+            Process.Start(dl)
         ElseIf vvr = rel Then
-            My.Computer.FileSystem.WriteAllText("ieu.txt", rl, False)
-            My.Computer.FileSystem.WriteAllText("iel.txt", Application.ExecutablePath, False)
+            Process.Start(rl)
         End If
-        My.Computer.FileSystem.WriteAllText("iee.txt", IO.Path.GetFileName(Application.ExecutablePath), False)
     End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs)
