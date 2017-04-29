@@ -43,11 +43,8 @@
         ncp = 0
         Label4.Visible = True
         Label3.Visible = True
-        Button6.Enabled = True
         Button2.Enabled = False
         Button1.Enabled = False
-        Button3.Enabled = False
-        Button4.Enabled = False
         Timer1.Enabled = True
     End Sub
 
@@ -119,14 +116,11 @@
     End Sub
     Public cancel As Boolean = False
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
         If korean Then
             OpenFileDialog1.Title = "파일 찾아보기"
         Else
             OpenFileDialog1.Title = "Browse File"
         End If
-
-
         Form2.ShowDialog()
         If cancel Then
             Exit Sub
@@ -134,9 +128,7 @@
         Button1.Enabled = True
         fullt = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
         b = UBound(Split(fullt, "hash")) - 1
-        Form2.Label3.Text = ""
         Form2.ComboBox1.Text = ""
-        Form2.ComboBox1.SelectedItem = ""
         If korean Then
             Form2.Label3.Text = "파일 선택 안함."
         Else
@@ -167,9 +159,6 @@
         Button1.Text = "Start"
         korean = False
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=EN_US", False)
-        '툴팁 설정
-        infott.SetToolTip(Button2, "100% free!! Use it right now!")
-        infott.SetToolTip(Button7, "Info : When connecting to the CDN server, perform automatic updates.")
         '상태 표시 설정
         Label9.Text = "No file"
         Label6.Text = "Already exists"
@@ -179,7 +168,7 @@
         Label4.Text = "Ready"
 
         Label13.Text = "An update available."
-        Button7.Text = "Update now"
+        Button7.Text = "Update"
     End Sub
 
 
@@ -194,9 +183,6 @@
         Button5.Text = "폴더 열기"
         korean = True
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=KO_KR", False)
-        '툴팁 설정
-        infott.SetToolTip(Button2, "100% 무료입니다!! 지금 바로 추출해보세요!")
-        infott.SetToolTip(Button7, "안내 : CDN 서버에 연결할 수 있을때는 자동 업데이트를 실시합니다.")
         '상태 표시 설정
         Label9.Text = "파일 없음"
         Label6.Text = "이미 추출"
@@ -220,13 +206,15 @@
             GoTo b
         End Try
         If My.Computer.FileSystem.FileExists("indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file) Then
-            Label7.Text = ale = ale + 1
+            ale = ale + 1
+            Label7.Text = ale
             cmp = cmp - 1
         End If
         Try
             My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file, True)
         Catch ex As System.IO.FileNotFoundException
-            Label8.Text = ncp = ncp + 1
+            ncp = ncp + 1
+            Label8.Text = ncp
             cmp = cmp - 1
         End Try
         cmp = cmp + 1
@@ -240,12 +228,9 @@
 b:
         '작업 완료후 코드
         '버튼 활성화
-        Button2.Enabled = True
-        Button1.Enabled = True
         Button3.Enabled = True
         Button4.Enabled = True
         Label3.Visible = False
-        Button6.Enabled = False
         Timer1.Enabled = False
         Button1.Enabled = False
         ale = 0
@@ -256,19 +241,13 @@ b:
         Else
             Label4.Text = "Ready"
         End If
-
     End Sub
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        '폴더 열기
-        Try
-            Process.Start(Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0))
-        Catch ex As System.ComponentModel.Win32Exception
-            Process.Start(Application.StartupPath)
-        End Try
+        Process.Start(Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0))
     End Sub
     Private Sub Dotdotdot_Tick(sender As Object, e As EventArgs) Handles Dotdotdot.Tick
         Select Case Label3.Text
-            Case "......."
+            Case "........"
                 Label3.Text = ""
             Case ""
                 Label3.Text = "."
@@ -284,25 +263,12 @@ b:
                 Label3.Text = "......"
             Case "......"
                 Label3.Text = "......."
+            Case "......."
+                Label3.Text = "........"
+            Case "........"
+                Label3.Text = "........."
         End Select
     End Sub
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
-        If Button6.Text = "┃┃" Then
-            Button6.Text = "▶"
-            Dotdotdot.Enabled = False
-            Label3.Text = "......."
-            Timer1.Enabled = False
-        ElseIf Button6.Text = "▶" Then
-            Button6.Text = "┃┃"
-            Dotdotdot.Enabled = True
-            Timer1.Enabled = True
-        End If
-    End Sub
-
-    Public cntt As Integer = 0
-    Public acntt As Boolean = False
-
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Dim vvr As String
         If Replace(Me.Text, "...", "") = Me.Text Then
@@ -328,6 +294,5 @@ b:
                 Process.Start(rl)
             End If
         End If
-
     End Sub
 End Class
