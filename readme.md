@@ -26,4 +26,5 @@ Step 5 : Click 'start'
 Step 6 : When it finish. click 'browse' button.
 
 Good job. You're done.
-[**Download it NOW!**] (https://github.com/dhkim0800/indexextract/releases/download/3.0b7/indexextract.exe)
+
+[**Download it NOW!**](https://github.com/dhkim0800/indexextract/releases/download/3.0b7/indexextract.exe).
