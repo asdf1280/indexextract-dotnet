@@ -3,7 +3,7 @@
 This is an beautiful working Minecraft index extract program.
 
 If you are using this program, you can easily extract the Minecraft index.
-The index is **usually** stored in an `.minecraft/assets/indexes`.
+The index is **usually** stored in an `.minecraft/assets/indexes`. This time, it only work in this directory. Please fork my project and improve it!
 
 You can easily extract the index would use this program.
 ## How to use this software
