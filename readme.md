@@ -1,29 +1,24 @@
-## Minecraft INDEX EXTRACTOR
-
-For resource pack creators.
-
+# Minecraft Index Extractor
 
 This is an beautiful working Minecraft index extract program.
 
 If you are using this program, you can easily extract the Minecraft index.
-
-The index is usually stored in an '.minecraft/assets/indexes'.
+The index is **usually** stored in an `.minecraft/assets/indexes`.
 
 You can easily extract the index would use this program.
+## How to use this software
 
-Step by Step : How to use this software---
+> Open the program
 
-Step 1 : Open the program
+> Click <kbd>browse</kbd> button
 
-Step 2 : Click 'browse' button
+> Select version from list or browse file.
 
-Step 3 : Select version from list or browse file.
+> Click <kbd>confirm</kbd>
 
-Step 4 : Click 'confirm'
+> Click <kbd>start</kbd>
 
-Step 5 : Click 'start'
-
-Step 6 : When it finish. click 'browse' button.
+> When it finish. click <kbd>browse</kbd>.
 
 Good job. You're done.
 
