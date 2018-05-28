@@ -1,4 +1,5 @@
 # Minecraft Index Extractor
+
 This is an beautiful working Minecraft index extract program.
 
 If you are using this program, you can easily extract the Minecraft index.
