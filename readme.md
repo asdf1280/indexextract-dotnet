@@ -1,12 +1,6 @@
-M I N E C R A F T
+## Minecraft INDEX EXTRACTOR
 
-INDEX   EXTRACTOR
-
-USE     IT    NOW
-
-FOR RESOURCE PACK
-
-C  R E A T O R  S
+For resource pack creators.
 
 
 This is an beautiful working Minecraft index extract program.
