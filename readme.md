@@ -23,7 +23,7 @@ You can easily extract the index would use this program.
 
 Good job. You're done.
 
-[**Download it NOW!**](https://github.com/dhkim0800/indexextract/releases/download/3.0b7/indexextract.exe).
+[**Download it NOW!**](https://github.com/dhkim0800/indexextract/releases/download/18.06e0/indexextract.exe).
 
 ## Known issues
 You have to install Minecraft, or you will meet **unhandled exceptions!**
