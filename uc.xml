@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <update>
  <project>indexextract</project>
- <dev>Index Extractor 18.06b0</dev>
  <rel>Index Extractor 18.06e0</rel>
- <dl>https://github.com/dhkim0800/indexextract/releases/18.06b0</dl>
+ <dev>Index Extractor 18.06b0</dev>
  <rl>https://github.com/dhkim0800/indexextract/releases/18.06e0</rl>
+ <dl>https://github.com/dhkim0800/indexextract/releases/18.06b0</dl>
 </update>
