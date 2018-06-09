@@ -7,10 +7,14 @@ Public Class Form1
         Try
             Dim c As New DataSet
             c.ReadXml(server)
-            dev = c.Tables(0).Rows(0).Item(1)
-            rel = c.Tables(0).Rows(0).Item(2)
-            dl = c.Tables(0).Rows(0).Item(3)
-            rl = c.Tables(0).Rows(0).Item(4)
+            rel = c.Tables(0).Rows(0).Item(1)
+            dev = c.Tables(0).Rows(0).Item(2)
+            rl = c.Tables(0).Rows(0).Item(3)
+            dl = c.Tables(0).Rows(0).Item(4)
+            Console.WriteLine(dev)
+            Console.WriteLine(rel)
+            Console.WriteLine(dl)
+            Console.WriteLine(rl)
         Catch ex As Exception
             Return 1
         End Try
@@ -113,12 +117,15 @@ Public Class Form1
         Dim vvr As String
         Upcheck("https://raw.githubusercontent.com/dhkim0800/indexextract/master/uc.xml")
         vvr = rel
-        If Me.Text.ToString.Contains("...") Then
+        If Me.Text.ToString.Contains("b") Then
             vvr = dev
         End If
         If Not vvr = Me.Text Then
             Label13.Visible = True
             Button7.Visible = True
+        Else
+            Label13.Visible = False
+            Button7.Visible = False
         End If
 
         Me.MaximizeBox = False
