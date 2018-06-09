@@ -191,7 +191,7 @@ Public Class Form1
         '상태 표시 설정
         Label9.Text = "파일을 찾지 못함"
         Label9.Font = New Font("맑은 고딕", 8.5, FontStyle.Regular)
-        Label6.Text = "파일이 이미 존재함"
+        Label6.Text = "파일 이미 존재"
         Label9.Font = New Font("맑은 고딕", 8, FontStyle.Regular)
         Label11.Text = "파일을 추출함"
 
@@ -281,10 +281,12 @@ b:
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Dim vvr As String
-        If Replace(Me.Text, "...", "") = Me.Text Then
+        If Me.Text.Contains("e") Then
             vvr = rel
-        Else
+        ElseIf Me.Text.Contains("b") Then
             vvr = dev
+        Else
+            vvr = False
         End If
         If vvr = dev Then
             Process.Start(dl)
