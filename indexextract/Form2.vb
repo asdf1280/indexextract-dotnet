@@ -2,7 +2,7 @@
 
 Public Class Form2
     Dim cfm As Boolean = False
-    Public sp As String = "legacy.json   1.7.10.json   1.8.json   1.9.json 1.9-aprilfools.json   1.10.json   1.11.json   1.12.json"
+    Public sp As String = "legacy.json   1.7.10.json   1.8.json   1.9.json 1.9-aprilfools.json   1.10.json   1.11.json   1.12.json   1.13.json"
     Public sz As String = ""
     Public Function Fds()
         For Each foundFile As String In My.Computer.FileSystem.GetFiles(

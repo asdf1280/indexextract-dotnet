@@ -26,3 +26,5 @@ Good job. You're done.
 
 ## Known issues
 You have to install Minecraft, or you will meet **unhandled exceptions!**
+
+Issue 2. In fact, Java is much faster in json processing with Gson.
