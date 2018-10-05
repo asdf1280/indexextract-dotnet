@@ -23,7 +23,7 @@ You can easily extract the index would use this program.
 
 Good job. You're done.
 
-[**Download it NOW!**](https://github.com/dhkim0800/indexextract/releases/download/18.06e0/indexextract.exe).
+[**Download it NOW!**](https://github.com/dhkim0800/indexextract/releases/download/18.06e0/indexextract.exe)
 
 ## Known issues
 
@@ -33,14 +33,14 @@ Issue 2. In fact, Java is much faster in json processing with Gson. (I couldn't 
 
 ## Get index from server
 
-Versions json file: https://launchermeta.mojang.com/mc/game/version_manifest.json
+Versions json file: [launchermeta.mojang.com](https://launchermeta.mojang.com/mc/game/version_manifest.json)
 
-Format json file: https://jsonformatter.curiousconcept.com/
+Format json file: [jsonformatter.curiousconcept.com](https://jsonformatter.curiousconcept.com/)
 
-Assets json URL: {version}.json=>assetIndex=>url
+Assets json URL: `{version}.json=>assetIndex=>url`
 
 Looks like this:
-
+```json
 {
 
   "objects": {
@@ -56,3 +56,4 @@ Looks like this:
   }
   
 }
+```
