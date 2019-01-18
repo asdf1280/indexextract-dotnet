@@ -2,7 +2,7 @@
 
 Public Class Form2
     Dim cfm As Boolean = False
-    Public sp As String = "legacy.json   1.7.10.json   1.8.json   1.9.json 1.9-aprilfools.json   1.10.json   1.11.json   1.12.json   1.13.json"
+    Public sp As String = "legacy.json   1.7.10.json   1.8.json   1.9.json 1.9-aprilfools.json   1.10.json   1.11.json   1.12.json   1.13.json   1.13.1.json   1.14.json"
     Public sz As String = ""
     Public Function Fds()
         For Each foundFile As String In My.Computer.FileSystem.GetFiles(
@@ -87,11 +87,11 @@ Public Class Form2
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        If Label3.Text = "No file." Or Label3.Text = "파일 선택 안함." Then
+        If Label3.Text = "No file selected" Or Label3.Text = "파일 선택 안함." Then
             If lang = "ko" Then
                 MsgBox("파일을 선택하지 않았습니다.")
             ElseIf lang = "en" Then
-                MsgBox("No file.")
+                MsgBox("You didn't select any file.")
             End If
             Exit Sub
         End If

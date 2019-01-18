@@ -10,10 +10,10 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("indexextract")>
 <Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyCompany("dhkim0800")>
 <Assembly: AssemblyProduct("indexextract")>
-<Assembly: AssemblyCopyright("Copyright ©  2017")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyCopyright("Copyright © dhkim0800 2017 all rights reserved")>
+<Assembly: AssemblyTrademark("dhkim0800")>
 
 <Assembly: ComVisible(False)>
 

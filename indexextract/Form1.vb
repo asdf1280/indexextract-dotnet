@@ -169,11 +169,11 @@ Public Class Form1
         lang = "en"
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=EN_US", False)
         '상태 표시 설정
-        Label9.Text = "Didn't found"
+        Label9.Text = "Not found"
         Label9.Font = New Font("Segot UI Symbol", 12.5, FontStyle.Regular)
-        Label6.Text = "Didn't overwrite"
+        Label6.Text = "Already exist"
         Label6.Font = New Font("Segoe UI Symobl", 10.3, FontStyle.Regular)
-        Label11.Text = "Extracted"
+        Label11.Text = "Success"
 
         Label3.Visible = False
         Label4.Text = "Wait"
