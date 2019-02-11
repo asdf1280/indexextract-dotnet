@@ -180,8 +180,6 @@ Public Class Form1
 
         Label13.Text = "An update available."
         Button7.Text = "Update"
-
-        CheckBox1.Text = "Fast mode(About 40% faster)"
     End Sub
 
 
@@ -207,34 +205,38 @@ Public Class Form1
 
         Label13.Text = "업데이트가 존재합니다."
         Button7.Text = "업데이트"
-
-        CheckBox1.Text = "고속 모드(약 40% 빠름)"
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        i = i + 1
-        Try
-            file = Split(fullt, Chr(34))(a)
-            hash = Split(fullt, Chr(34))(a + 4)
-            a = a + 8
-        Catch ex As System.IndexOutOfRangeException
-            GoTo b
-        End Try
-        If My.Computer.FileSystem.FileExists("indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file) Then
-            ale += 1
-            Label7.Text = ale
-        End If
-        Try
-            My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file, True)
-            cmp += 1
-        Catch ex As System.IO.FileNotFoundException
-            ncp += 1
-            Label8.Text = ncp
-        End Try
+        For t As Int16 = 1 To 5 Step 1
+            i = i + 1
+            Try
+                file = Split(fullt, Chr(34))(a)
+                hash = Split(fullt, Chr(34))(a + 4)
+                a = a + 8
+            Catch ex As System.IndexOutOfRangeException
+                RefreshIndexTexts()
+                WorkEnd()
+                Return
+            End Try
+            If My.Computer.FileSystem.FileExists("indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file) Then
+                ale += 1
+                Label7.Text = ale
+            End If
+            Try
+                My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file, True)
+                cmp += 1
+            Catch ex As System.IO.FileNotFoundException
+                ncp += 1
+                Label8.Text = ncp
+            End Try
+        Next
+        RefreshIndexTexts()
+    End Sub
+    Private Sub RefreshIndexTexts()
         Label10.Text = cmp
         Label1.Text = Int(i / b * 100) & "%"
-        If CheckBox1.Checked And Not i Mod 20 = 0 Then Timer1_Tick(sender, e)
-        Exit Sub
-b:
+    End Sub
+    Private Sub WorkEnd()
         '작업 완료후 코드
         '버튼 활성화
         Button1.Enabled = False

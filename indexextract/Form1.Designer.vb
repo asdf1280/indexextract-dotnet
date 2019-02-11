@@ -46,7 +46,6 @@ Partial Class Form1
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.nowt.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -286,25 +285,11 @@ Partial Class Form1
         Me.Label13.Text = "An update available."
         Me.Label13.Visible = False
         '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Checked = True
-        Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox1.Font = New System.Drawing.Font("Segoe UI Symbol", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox1.Location = New System.Drawing.Point(155, 170)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(181, 19)
-        Me.CheckBox1.TabIndex = 29
-        Me.CheckBox1.Text = "Fast mode(8sec faster in 1.12)"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(448, 224)
-        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Panel2)
@@ -318,7 +303,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 19.01e0"
+        Me.Text = "Index Extractor 19.02e0"
         Me.nowt.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
@@ -353,5 +338,4 @@ Partial Class Form1
     Friend WithEvents Label13 As Label
     Friend WithEvents Button7 As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents CheckBox1 As CheckBox
 End Class

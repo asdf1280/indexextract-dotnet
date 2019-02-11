@@ -5,14 +5,16 @@ Public Class Form2
     Public sp As String = "legacy.json   1.7.10.json   1.8.json   1.9.json 1.9-aprilfools.json   1.10.json   1.11.json   1.12.json   1.13.json   1.13.1.json   1.14.json"
     Public sz As String = ""
     Public Function Fds()
+        ComboBox1.Items.Clear()
+
         For Each foundFile As String In My.Computer.FileSystem.GetFiles(
-          "c:\Users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\indexes")
+          Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\.minecraft\assets\indexes")
             Dim it As String
             it = Split(foundFile, "\")(UBound(Split(foundFile, "\")))
             If Replace(sp, it, "") = sp Then
                 Continue For
             End If
-            ComboBox1.Items.Add(Split(foundFile, "\")(UBound(Split(foundFile, "\"))))
+            ComboBox1.Items.Add(Split(foundFile, "\")(Split(foundFile, "\").Length - 1))
         Next
         Return 1
     End Function
