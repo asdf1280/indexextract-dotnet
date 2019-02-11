@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+
 Public Class Form1
     Dim dev As String
     Dim rel As String
@@ -20,52 +21,6 @@ Public Class Form1
         End Try
         Return 0
     End Function
-
-
-
-
-    Dim ale As Integer = 0
-    Public fullt As String
-    Dim abcd As Integer
-    Public i As Integer
-    Public a As Integer
-    Public hash As String
-    Public b As Integer
-    Public file As String
-    Dim cmp As Integer
-    Dim ncp As Integer
-    Public lang As String
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If lang = "ko" Then
-            Label4.Text = "준비중"
-        ElseIf lang = "en" Then
-            Label4.Text = "Prepearing"
-        End If
-        If My.Computer.FileSystem.DirectoryExists("indexextract\" & Path.GetFileNameWithoutExtension(OpenFileDialog1.FileName)) Then
-            Shell("cmd /c rd /Q /S " & Chr(34) & "indexextract\" & Path.GetFileNameWithoutExtension(OpenFileDialog1.FileName) & Chr(34), AppWinStyle.Hide, True)
-        End If
-        abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
-        Button5.Enabled = True
-        Label7.Text = "0"
-        Label8.Text = "0"
-        Label10.Text = "0"
-        i = 0
-        a = 3
-        cmp = 0
-        ale = 0
-        ncp = 0
-        Label4.Visible = True
-        Label3.Visible = True
-        Label1.Visible = True
-        Button2.Enabled = False
-        Button1.Enabled = False
-        If lang = "ko" Then
-            Label4.Text = "추출 : "
-        ElseIf lang = "en" Then
-            Label4.Text = "Extract Progress : "
-        End If
-        Timer1.Enabled = True
-    End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Show()
@@ -170,9 +125,9 @@ Public Class Form1
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=EN_US", False)
         '상태 표시 설정
         Label9.Text = "Not found"
-        Label9.Font = New Font("Segot UI Symbol", 12.5, FontStyle.Regular)
+        Label9.Font = New Font("Segoe UI", 12.5, FontStyle.Regular)
         Label6.Text = "Already exist"
-        Label6.Font = New Font("Segoe UI Symobl", 10.3, FontStyle.Regular)
+        Label6.Font = New Font("Segoe UI", 10.3, FontStyle.Regular)
         Label11.Text = "Success"
 
         Label3.Visible = False
@@ -206,27 +161,84 @@ Public Class Form1
         Label13.Text = "업데이트가 존재합니다."
         Button7.Text = "업데이트"
     End Sub
+    Private Structure WorkData
+        Public dataJson As String()
+    End Structure
+    Private workDataObj As WorkData = Nothing
+    Private ad As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\.minecraft\"
+    'Fields 2
+    Dim ale As Integer = 0
+    Public fullt As String
+    Dim abcd As Integer
+    Public i As Integer
+    Public index As Integer
+    Public hash As String
+    Public b As Integer
+    Public file As String
+    Dim cmp As Integer
+    Dim ncp As Integer
+    Public lang As String
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If lang = "ko" Then
+            Label4.Text = "준비중"
+        ElseIf lang = "en" Then
+            Label4.Text = "Prepearing"
+        End If
+        'If My.Computer.FileSystem.DirectoryExists("indexextract\" & Path.GetFileNameWithoutExtension(OpenFileDialog1.FileName)) Then
+        '    Shell("cmd /c rd /Q /S " & Chr(34) & "indexextract\" & Path.GetFileNameWithoutExtension(OpenFileDialog1.FileName) & Chr(34), AppWinStyle.Hide, True)
+        'End If
+        abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
+        Button5.Enabled = True
+        Label7.Text = "0"
+        Label8.Text = "0"
+        Label10.Text = "0"
+        i = 0
+        index = 3
+        cmp = 0
+        ale = 0
+        ncp = 0
+        Label4.Visible = True
+        Label3.Visible = True
+        Label1.Visible = True
+        Button2.Enabled = False
+        Button1.Enabled = False
+        If lang = "ko" Then
+            Label4.Text = "추출"
+        ElseIf lang = "en" Then
+            Label4.Text = "Processing"
+        End If
+
+        workDataObj = New WorkData With {
+            .dataJson = Split(fullt, Chr(34))
+        }
+        Timer1.Enabled = True
+    End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         For t As Int16 = 1 To 5 Step 1
             i = i + 1
             Try
-                file = Split(fullt, Chr(34))(a)
-                hash = Split(fullt, Chr(34))(a + 4)
-                a = a + 8
+                file = workDataObj.dataJson(index)
+                hash = workDataObj.dataJson(index + 4)
+                index = index + 8
             Catch ex As System.IndexOutOfRangeException
                 RefreshIndexTexts()
                 WorkEnd()
                 Return
             End Try
-            If My.Computer.FileSystem.FileExists("indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file) Then
+            Dim sourceFile As String = ad & "assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash
+            Dim targetFile As String = ".\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file
+            If My.Computer.FileSystem.FileExists(targetFile) Then
                 ale += 1
                 Label7.Text = ale
+                t = t - 1
+                Continue For
             End If
             Try
-                My.Computer.FileSystem.CopyFile("c:\users\" & Split(My.User.Name, "\")(1) & "\appdata\roaming\.minecraft\assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash, "indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file, True)
+                My.Computer.FileSystem.CopyFile(sourceFile, targetFile, True)
                 cmp += 1
             Catch ex As System.IO.FileNotFoundException
                 ncp += 1
+                t = t - 1
                 Label8.Text = ncp
             End Try
         Next
@@ -238,6 +250,8 @@ Public Class Form1
     End Sub
     Private Sub WorkEnd()
         '작업 완료후 코드
+        workDataObj = Nothing
+
         '버튼 활성화
         Button1.Enabled = False
         Button2.Enabled = True
@@ -260,28 +274,11 @@ Public Class Form1
         Process.Start(Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0))
     End Sub
     Private Sub Dotdotdot_Tick(sender As Object, e As EventArgs) Handles Dotdotdot.Tick
-        Select Case Label3.Text
-            Case "........"
-                Label3.Text = ""
-            Case ""
-                Label3.Text = "."
-            Case "."
-                Label3.Text = ".."
-            Case ".."
-                Label3.Text = "..."
-            Case "..."
-                Label3.Text = "...."
-            Case "...."
-                Label3.Text = "....."
-            Case "....."
-                Label3.Text = "......"
-            Case "......"
-                Label3.Text = "......."
-            Case "......."
-                Label3.Text = "........"
-            Case "........"
-                Label3.Text = "........."
-        End Select
+        If Label3.Text.Length < 8 Then
+            Label3.Text &= "."
+        Else
+            Label3.Text = ""
+        End If
     End Sub
 
     Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
