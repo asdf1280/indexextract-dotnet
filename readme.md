@@ -1,5 +1,5 @@
 # Minecraft Index Extractor - VB.NET Version
-(Working on .NET Framework 4.7.1+)
+(Working on .NET Framework 4.7.2+)
 
 This is an beautiful working Minecraft index extract program.
 
