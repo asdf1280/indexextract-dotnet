@@ -163,6 +163,7 @@ Public Class Form1
     End Sub
     Private Structure WorkData
         Public dataJson As String()
+        Public targetPath As String
     End Structure
     Private workDataObj As WorkData = Nothing
     Private ad As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\.minecraft\"
@@ -172,9 +173,7 @@ Public Class Form1
     Dim abcd As Integer
     Public i As Integer
     Public index As Integer
-    Public hash As String
     Public b As Integer
-    Public file As String
     Dim cmp As Integer
     Dim ncp As Integer
     Public lang As String
@@ -209,13 +208,16 @@ Public Class Form1
         End If
 
         workDataObj = New WorkData With {
-            .dataJson = Split(fullt, Chr(34))
+            .dataJson = Split(fullt, Chr(34)),
+            .targetPath = ".\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0)
         }
         Timer1.Enabled = True
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        For t As Int16 = 1 To 5 Step 1
+        For t As Int16 = 1 To 25 Step 1
             i = i + 1
+            Dim file As String
+            Dim hash As String
             Try
                 file = workDataObj.dataJson(index)
                 hash = workDataObj.dataJson(index + 4)
@@ -226,11 +228,10 @@ Public Class Form1
                 Return
             End Try
             Dim sourceFile As String = ad & "assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash
-            Dim targetFile As String = ".\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0) & "\" & file
+            Dim targetFile As String = workDataObj.targetPath & "\" & file
             If My.Computer.FileSystem.FileExists(targetFile) Then
                 ale += 1
                 Label7.Text = ale
-                t = t - 1
                 Continue For
             End If
             Try
@@ -238,7 +239,6 @@ Public Class Form1
                 cmp += 1
             Catch ex As System.IO.FileNotFoundException
                 ncp += 1
-                t = t - 1
                 Label8.Text = ncp
             End Try
         Next
@@ -251,6 +251,7 @@ Public Class Form1
     Private Sub WorkEnd()
         '작업 완료후 코드
         workDataObj = Nothing
+        GC.Collect()
 
         '버튼 활성화
         Button1.Enabled = False
