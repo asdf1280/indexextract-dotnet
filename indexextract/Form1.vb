@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports System.Threading
+Imports System.Windows.Forms
 
 Public Class Form1
     Dim dev As String
@@ -24,10 +26,6 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Show()
-
-        If My.Computer.FileSystem.FileExists("ieup.exe") Then
-            My.Computer.FileSystem.DeleteFile("ieup.exe")
-        End If
 
         '언어설정은 한국인만 받아요
         If Not System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag = "ko-KR" Then
@@ -68,31 +66,57 @@ Public Class Form1
             Application.Restart()
         End If
 
-
-        Dim vvr As String
-        Upcheck("https://raw.githubusercontent.com/dhkim0800/indexextract/master/uc.xml")
-        vvr = rel
-        If Me.Text.ToString.Contains("b") Then
-            vvr = dev
-        End If
-        If Not vvr = Me.Text Then
-            Label13.Visible = True
-            Button7.Visible = True
-        Else
-            Label13.Visible = False
-            Button7.Visible = False
-        End If
-
         Me.MaximizeBox = False
+
+        Dim t As New Thread(AddressOf AsyncUpCheck)
+        t.Priority = ThreadPriority.Highest
+        t.Start()
 
         If lang = "ko" Then
             Label4.Text = "대기"
         ElseIf lang = "en" Then
             Label4.Text = "Wait"
         End If
-
-
     End Sub
+    'setvisible delegate
+    Private Structure ControlBool
+        Public c As Control
+        Public b As Boolean
+
+        Public Sub New(control As Control, bool As Boolean)
+            c = control
+            b = bool
+        End Sub
+    End Structure
+    Private Sub SetVisible(cb As ControlBool)
+        cb.c.Visible = cb.b
+    End Sub
+    Private Delegate Sub ControlBoolD(cb As ControlBool)
+
+    Private Sub ManageComponent(cb As ControlBool)
+        If cb.b Then
+            Me.Controls.Add(cb.c)
+        Else
+            Me.Controls.Remove(cb.c)
+        End If
+    End Sub
+    Private Sub AsyncUpCheck()
+        Dim vvr As String
+        Upcheck("https://raw.githubusercontent.com/dhkim0800/indexextract/master/uc.xml")
+        vvr = rel
+        If Me.Text.ToString.Contains("b") Then
+            vvr = dev
+        End If
+        Dim svd As New ControlBoolD(AddressOf SetVisible)
+        If Not vvr = Me.Text Then
+            Me.Invoke(svd, New ControlBool(Label13, True))
+            Me.Invoke(svd, New ControlBool(Button7, True))
+        Else
+            Me.Invoke(svd, New ControlBool(Label13, False))
+            Me.Invoke(svd, New ControlBool(Button7, False))
+        End If
+    End Sub
+
     Public cancel As Boolean = False
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         If lang = "ko" Then
@@ -214,7 +238,7 @@ Public Class Form1
         Timer1.Enabled = True
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        For t As Int16 = 1 To 25 Step 1
+        For t As Int16 = 1 To 100 Step 1
             i = i + 1
             Dim file As String
             Dim hash As String
@@ -243,6 +267,7 @@ Public Class Form1
             End Try
         Next
         RefreshIndexTexts()
+        'Timer1_Tick(sender, e)
     End Sub
     Private Sub RefreshIndexTexts()
         Label10.Text = cmp
