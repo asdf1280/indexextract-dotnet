@@ -76,7 +76,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>indexextract_4_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -165,11 +166,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="indexextract_1_TemporaryKey.pfx" />
-    <None Include="indexextract_2_TemporaryKey.pfx" />
-    <None Include="indexextract_3_TemporaryKey.pfx" />
-    <None Include="indexextract_4_TemporaryKey.pfx" />
-    <None Include="indexextract_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
