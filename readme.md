@@ -1,5 +1,5 @@
-# Minecraft Index Extractor - VB.NET Version
-(Working on .NET Framework 4.7.1+)
+# Minecraft Index Extractor - .NET Version
+(Working on .NET Framework 4.7.2+)
 
 This is an beautiful working Minecraft index extract program.
 
@@ -29,7 +29,7 @@ Good job. You're done.
 
 You have to install Minecraft, or you will meet **unhandled exceptions!**
 
-Issue 2. In fact, Java is much faster in json processing with Gson. (I couldn't find JSON api. If you find it, Please contact to bycommandntwk@gmail.com, dhkim0800@naver.com, or Issues page in this project(recommended). AND I DON'T KNOW ASYNC PROGRAMMING WITH VB WELL AND I CANNOT CHANGE CODE WITH JSON API.
+Issue 2. It doesn't process with json. So when minecraft json structure change even a little bit, it will not work. But i think it won't.
 
 ## Get index from server
 
