@@ -28,7 +28,6 @@ Partial Class Form1
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Dotdotdot = New System.Windows.Forms.Timer(Me.components)
@@ -42,14 +41,12 @@ Partial Class Form1
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.nowt.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -104,10 +101,6 @@ Partial Class Form1
         Me.Button4.Text = "한국어"
         Me.Button4.UseVisualStyleBackColor = False
         '
-        'Timer1
-        '
-        Me.Timer1.Interval = 1
-        '
         'Button5
         '
         Me.Button5.BackColor = System.Drawing.Color.DodgerBlue
@@ -153,9 +146,9 @@ Partial Class Form1
         'Button7
         '
         Me.Button7.Font = New System.Drawing.Font("Segoe UI Symbol", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.Location = New System.Drawing.Point(339, 192)
+        Me.Button7.Location = New System.Drawing.Point(331, 191)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(105, 20)
+        Me.Button7.Size = New System.Drawing.Size(105, 23)
         Me.Button7.TabIndex = 28
         Me.Button7.Text = "Update"
         Me.Button7.UseVisualStyleBackColor = True
@@ -189,16 +182,16 @@ Partial Class Form1
         Me.Panel2.BackColor = System.Drawing.Color.Gold
         Me.Panel2.Controls.Add(Me.Label7)
         Me.Panel2.Controls.Add(Me.Label6)
-        Me.Panel2.Location = New System.Drawing.Point(339, 101)
+        Me.Panel2.Location = New System.Drawing.Point(301, 87)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(105, 84)
+        Me.Panel2.Size = New System.Drawing.Size(135, 95)
         Me.Panel2.TabIndex = 17
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI Symbol", 27.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(3, 24)
+        Me.Label7.Location = New System.Drawing.Point(3, 32)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(42, 50)
         Me.Label7.TabIndex = 20
@@ -210,25 +203,25 @@ Partial Class Form1
         Me.Label6.Font = New System.Drawing.Font("Segoe UI Symbol", 8.0!)
         Me.Label6.Location = New System.Drawing.Point(3, 6)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(101, 13)
+        Me.Label6.Size = New System.Drawing.Size(54, 13)
         Me.Label6.TabIndex = 19
-        Me.Label6.Text = "파일이 이미 존재함"
+        Me.Label6.Text = "파일 중복"
         '
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Red
         Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Location = New System.Drawing.Point(339, 12)
+        Me.Panel1.Location = New System.Drawing.Point(160, 87)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(105, 84)
+        Me.Panel1.Size = New System.Drawing.Size(135, 95)
         Me.Panel1.TabIndex = 21
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Segoe UI Symbol", 27.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(3, 27)
+        Me.Label8.Location = New System.Drawing.Point(3, 32)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(42, 50)
         Me.Label8.TabIndex = 20
@@ -240,39 +233,9 @@ Partial Class Form1
         Me.Label9.Font = New System.Drawing.Font("맑은 고딕", 8.5!)
         Me.Label9.Location = New System.Drawing.Point(3, 6)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(99, 15)
+        Me.Label9.Size = New System.Drawing.Size(52, 15)
         Me.Label9.TabIndex = 19
-        Me.Label9.Text = "파일을 찾지 못함"
-        '
-        'Panel3
-        '
-        Me.Panel3.BackColor = System.Drawing.Color.ForestGreen
-        Me.Panel3.Controls.Add(Me.Label10)
-        Me.Panel3.Controls.Add(Me.Label11)
-        Me.Panel3.Location = New System.Drawing.Point(155, 12)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(178, 152)
-        Me.Panel3.TabIndex = 22
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Segoe UI Symbol", 50.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(0, 56)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(74, 89)
-        Me.Label10.TabIndex = 20
-        Me.Label10.Text = "0"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Segoe UI Symbol", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(12, 10)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(97, 32)
-        Me.Label11.TabIndex = 19
-        Me.Label11.Text = "Success"
+        Me.Label9.Text = "I/O 오류"
         '
         'Label13
         '
@@ -285,15 +248,34 @@ Partial Class Form1
         Me.Label13.Text = "An update available."
         Me.Label13.Visible = False
         '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(160, 41)
+        Me.ProgressBar1.MarqueeAnimationSpeed = 10
+        Me.ProgressBar1.Maximum = 10000
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(276, 40)
+        Me.ProgressBar1.TabIndex = 29
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("맑은 고딕", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(129, Byte))
+        Me.Label2.Location = New System.Drawing.Point(156, 11)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(84, 21)
+        Me.Label2.TabIndex = 30
+        Me.Label2.Text = "Progress: "
+        '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(448, 224)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.nowt)
         Me.Controls.Add(Me.Button5)
@@ -303,14 +285,12 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "Form1"
-        Me.Text = "Index Extractor 19.02e1"
+        Me.Text = "Index Extractor 19.02e1vb"
         Me.nowt.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
-        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -320,7 +300,6 @@ Partial Class Form1
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
-    Friend WithEvents Timer1 As Timer
     Friend WithEvents Button5 As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents Dotdotdot As Timer
@@ -332,10 +311,9 @@ Partial Class Form1
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
-    Friend WithEvents Panel3 As Panel
-    Friend WithEvents Label10 As Label
-    Friend WithEvents Label11 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents Button7 As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents Label2 As Label
 End Class
