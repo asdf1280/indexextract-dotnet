@@ -377,7 +377,6 @@ namespace indexextract_cs {
         private void RefreshIndexTexts() {
             int pc = 0;
             if (b != 0) pc = i * 100 / b;
-            Console.WriteLine(i + " : " + b);
             ProgressBar1.Value = pc * 100;
             Label1.Text = pc + "%";
         }
