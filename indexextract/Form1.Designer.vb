@@ -28,7 +28,6 @@ Partial Class Form1
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Dotdotdot = New System.Windows.Forms.Timer(Me.components)
@@ -102,10 +101,6 @@ Partial Class Form1
         Me.Button4.Text = "한국어"
         Me.Button4.UseVisualStyleBackColor = False
         '
-        'Timer1
-        '
-        Me.Timer1.Interval = 1
-        '
         'Button5
         '
         Me.Button5.BackColor = System.Drawing.Color.DodgerBlue
@@ -151,7 +146,7 @@ Partial Class Form1
         'Button7
         '
         Me.Button7.Font = New System.Drawing.Font("Segoe UI Symbol", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button7.Location = New System.Drawing.Point(339, 191)
+        Me.Button7.Location = New System.Drawing.Point(331, 191)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(105, 23)
         Me.Button7.TabIndex = 28
@@ -256,7 +251,7 @@ Partial Class Form1
         'ProgressBar1
         '
         Me.ProgressBar1.Location = New System.Drawing.Point(160, 41)
-        Me.ProgressBar1.MarqueeAnimationSpeed = 50
+        Me.ProgressBar1.MarqueeAnimationSpeed = 10
         Me.ProgressBar1.Maximum = 10000
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(276, 40)
@@ -274,8 +269,7 @@ Partial Class Form1
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 12.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(448, 224)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.ProgressBar1)
@@ -306,7 +300,6 @@ Partial Class Form1
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
-    Friend WithEvents Timer1 As Timer
     Friend WithEvents Button5 As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents Dotdotdot As Timer

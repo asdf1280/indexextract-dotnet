@@ -27,10 +27,10 @@ Public Class Form2
         ElseIf fi = DialogResult.OK Then
             Dim abcd As Integer
             abcd = UBound(Split(Form1.OpenFileDialog1.FileName, "\"))
-            txt = My.Computer.FileSystem.ReadAllText(Form1.OpenFileDialog1.FileName)
-            If Split(Form1.OpenFileDialog1.FileName, "\")(abcd) = "legacy.json" Then
-                txt = Split(txt, Chr(34) & "virtual" & Chr(34) & ": true,")(1)
-            End If
+            'txt = My.Computer.FileSystem.ReadAllText(Form1.OpenFileDialog1.FileName)
+            'If Split(Form1.OpenFileDialog1.FileName, "\")(abcd) = "legacy.json" Then
+            '    txt = Split(txt, Chr(34) & "virtual" & Chr(34) & ": true,")(1)
+            'End If
             '허가된 파일 이름인지 확인
             Dim fn As String = Split(Form1.OpenFileDialog1.FileName, "\")(abcd)
 
