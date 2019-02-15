@@ -1,4 +1,7 @@
-﻿Imports System.IO
+﻿Imports System.ComponentModel
+Imports System.IO
+Imports System.Threading
+Imports System.Windows.Forms
 
 Public Class Form1
     Dim dev As String
@@ -24,10 +27,6 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Show()
-
-        If My.Computer.FileSystem.FileExists("ieup.exe") Then
-            My.Computer.FileSystem.DeleteFile("ieup.exe")
-        End If
 
         '언어설정은 한국인만 받아요
         If Not System.Globalization.CultureInfo.CurrentCulture.IetfLanguageTag = "ko-KR" Then
@@ -68,31 +67,73 @@ Public Class Form1
             Application.Restart()
         End If
 
-
-        Dim vvr As String
-        Upcheck("https://raw.githubusercontent.com/dhkim0800/indexextract/master/uc.xml")
-        vvr = rel
-        If Me.Text.ToString.Contains("b") Then
-            vvr = dev
-        End If
-        If Not vvr = Me.Text Then
-            Label13.Visible = True
-            Button7.Visible = True
-        Else
-            Label13.Visible = False
-            Button7.Visible = False
-        End If
-
         Me.MaximizeBox = False
+
+        Dim t As New Thread(AddressOf AsyncUpCheck)
+        t.Priority = ThreadPriority.Highest
+        t.Start()
 
         If lang = "ko" Then
             Label4.Text = "대기"
         ElseIf lang = "en" Then
             Label4.Text = "Wait"
         End If
-
-
     End Sub
+    'setvisible delegate
+    Private Structure ControlBool
+        Public c As Control
+        Public b As Boolean
+
+        Public Sub New(control As Control, bool As Boolean)
+            c = control
+            b = bool
+        End Sub
+    End Structure
+    Private Structure ControlStr
+        Public c As Control
+        Public b As String
+
+        Public Sub New(control As Control, bool As String)
+            c = control
+            b = bool
+        End Sub
+    End Structure
+    Private Sub SetVisible(cb As ControlBool)
+        cb.c.Visible = cb.b
+    End Sub
+    Private Delegate Sub ControlBoolD(cb As ControlBool)
+    Private Delegate Sub ControlStrD(cb As ControlStr)
+
+    Private Sub ManageComponent(cb As ControlBool)
+        If cb.b Then
+            Me.Controls.Add(cb.c)
+        Else
+            Me.Controls.Remove(cb.c)
+        End If
+    End Sub
+    Private Sub AsyncUpCheck()
+        Dim vvr As String
+        Upcheck("https://raw.githubusercontent.com/dhkim0800/indexextract/master/uc.xml")
+        vvr = rel
+        If Me.Text.ToString.Contains("b") Then
+            vvr = dev
+        End If
+        Dim svd As New ControlBoolD(AddressOf SetVisible)
+        Try
+            If Not vvr = Me.Text Then
+                Me.Invoke(svd, New ControlBool(Label13, True))
+                Me.Invoke(svd, New ControlBool(Button7, True))
+            Else
+                Me.Invoke(svd, New ControlBool(Label13, False))
+                Me.Invoke(svd, New ControlBool(Button7, False))
+            End If
+        Catch ex As Exception When TypeOf ex Is InvalidOperationException
+            Application.Exit()
+        End Try
+    End Sub
+
+    Private Delegate Sub VoidDelegate()
+
     Public cancel As Boolean = False
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         If lang = "ko" Then
@@ -107,8 +148,6 @@ Public Class Form1
             Exit Sub
         End If
         Button1.Enabled = True
-        fullt = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
-        b = UBound(Split(fullt, "hash")) - 1
         Form2.ComboBox1.Text = ""
         Dim o As Integer
         o = UBound(Split(OpenFileDialog1.FileName, "\"))
@@ -124,11 +163,13 @@ Public Class Form1
         lang = "en"
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=EN_US", False)
         '상태 표시 설정
-        Label9.Text = "Not found"
+        Label9.Text = "I/O Error"
         Label9.Font = New Font("Segoe UI", 12.5, FontStyle.Regular)
-        Label6.Text = "Already exist"
+        Label6.Text = "Duplicated file"
         Label6.Font = New Font("Segoe UI", 10.3, FontStyle.Regular)
-        Label11.Text = "Success"
+
+        Label2.Font = New Font("Segoe UI", 12, FontStyle.Regular)
+        Label2.Text = "Progress: "
 
         Label3.Visible = False
         Label4.Text = "Wait"
@@ -149,11 +190,13 @@ Public Class Form1
         lang = "ko"
         My.Computer.FileSystem.WriteAllText("c:\indexextract\lang.set", "lang=KO_KR", False)
         '상태 표시 설정
-        Label9.Text = "파일을 찾지 못함"
+        Label9.Text = "I/O 오류"
         Label9.Font = New Font("맑은 고딕", 8.5, FontStyle.Regular)
-        Label6.Text = "파일 이미 존재"
+        Label6.Text = "파일 중복"
         Label9.Font = New Font("맑은 고딕", 8, FontStyle.Regular)
-        Label11.Text = "파일을 추출함"
+
+        Label2.Font = New Font("맑은 고딕", 12, FontStyle.Regular)
+        Label2.Text = "진행률: "
 
         Label3.Visible = False
         Label4.Text = "대기"
@@ -169,17 +212,15 @@ Public Class Form1
     Private ad As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\.minecraft\"
     'Fields 2
     Dim ale As Integer = 0
-    Public fullt As String
     Dim abcd As Integer
     Public i As Integer
     Public index As Integer
     Public b As Integer
-    Dim cmp As Integer
     Dim ncp As Integer
     Public lang As String
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If lang = "ko" Then
-            Label4.Text = "준비중"
+            Label4.Text = "준비 중"
         ElseIf lang = "en" Then
             Label4.Text = "Prepearing"
         End If
@@ -187,13 +228,11 @@ Public Class Form1
         '    Shell("cmd /c rd /Q /S " & Chr(34) & "indexextract\" & Path.GetFileNameWithoutExtension(OpenFileDialog1.FileName) & Chr(34), AppWinStyle.Hide, True)
         'End If
         abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
-        Button5.Enabled = True
         Label7.Text = "0"
         Label8.Text = "0"
-        Label10.Text = "0"
+        ProgressBar1.Value = 0
         i = 0
         index = 3
-        cmp = 0
         ale = 0
         ncp = 0
         Label4.Visible = True
@@ -201,52 +240,69 @@ Public Class Form1
         Label1.Visible = True
         Button2.Enabled = False
         Button1.Enabled = False
+        Button5.Enabled = False
         If lang = "ko" Then
             Label4.Text = "추출"
         ElseIf lang = "en" Then
             Label4.Text = "Processing"
         End If
 
+        Dim fullt As String = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
+        b = UBound(Split(fullt, "hash")) - 1
+
         workDataObj = New WorkData With {
             .dataJson = Split(fullt, Chr(34)),
             .targetPath = ".\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0)
         }
-        Timer1.Enabled = True
+
+        Dim t As New Thread(AddressOf WorkThread)
+        t.Name = "Indexextract worker"
+        t.Priority = ThreadPriority.Highest
+        t.Start()
     End Sub
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        For t As Int16 = 1 To 25 Step 1
-            i = i + 1
-            Dim file As String
-            Dim hash As String
-            Try
-                file = workDataObj.dataJson(index)
-                hash = workDataObj.dataJson(index + 4)
-                index = index + 8
-            Catch ex As System.IndexOutOfRangeException
-                RefreshIndexTexts()
-                WorkEnd()
-                Return
-            End Try
-            Dim sourceFile As String = ad & "assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash
-            Dim targetFile As String = workDataObj.targetPath & "\" & file
-            If My.Computer.FileSystem.FileExists(targetFile) Then
-                ale += 1
-                Label7.Text = ale
-                Continue For
-            End If
-            Try
-                My.Computer.FileSystem.CopyFile(sourceFile, targetFile, True)
-                cmp += 1
-            Catch ex As System.IO.FileNotFoundException
-                ncp += 1
-                Label8.Text = ncp
-            End Try
-        Next
-        RefreshIndexTexts()
+    Private Sub WorkThread()
+        Dim vd As New VoidDelegate(AddressOf RefreshIndexTexts)
+        Dim cd As New ControlStrD(AddressOf SetControlIntTxt)
+        Do
+            For t As Int16 = 1 To 50 Step 1
+                i = i + 1
+                Dim file As String
+                Dim hash As String
+                Try
+                    file = workDataObj.dataJson(index)
+                    hash = workDataObj.dataJson(index + 4)
+                    index = index + 8
+                Catch ex As System.IndexOutOfRangeException
+                    Me.Invoke(vd)
+                    Dim ed As New VoidDelegate(AddressOf WorkEnd)
+                    Me.Invoke(ed)
+                    Return
+                End Try
+                Dim sourceFile As String = ad & "assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash
+                Dim targetFile As String = workDataObj.targetPath & "\" & file
+                If My.Computer.FileSystem.FileExists(targetFile) Then
+                    ale += 1
+                    Me.Invoke(cd, New ControlStr(Label7, ale))
+                    Continue For
+                End If
+                Try
+                    My.Computer.FileSystem.CopyFile(sourceFile, targetFile, True)
+                Catch ex As System.IO.FileNotFoundException
+                    ncp += 1
+                    Me.Invoke(cd, New ControlStr(Label8, ncp))
+                End Try
+            Next
+            Me.Invoke(vd)
+        Loop
     End Sub
     Private Sub RefreshIndexTexts()
-        Label10.Text = cmp
-        Label1.Text = Int(i / b * 100) & "%"
+        'Label10.Text = cmp
+        Dim pc As Short = i * 100 / b
+        ProgressBar1.Value = pc * 100
+        Label1.Text = pc & "%"
+    End Sub
+    Private Sub SetControlIntTxt(cb As ControlStr)
+        cb.c.Text = cb.b
     End Sub
     Private Sub WorkEnd()
         '작업 완료후 코드
@@ -258,11 +314,10 @@ Public Class Form1
         Button2.Enabled = True
         Button3.Enabled = True
         Button4.Enabled = True
+        Button5.Enabled = True
         Label3.Visible = False
         Label1.Visible = False
-        Timer1.Enabled = False
         ale = 0
-        cmp = 0
         ncp = 0
         Label1.Text = ""
         If lang = "ko" Then
@@ -272,7 +327,17 @@ Public Class Form1
         End If
     End Sub
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Process.Start(Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0))
+        Try
+            Process.Start(Application.StartupPath & "\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0))
+        Catch ex As Exception When TypeOf ex Is DirectoryNotFoundException Or TypeOf ex Is FileNotFoundException Or TypeOf ex Is Win32Exception
+            Dim emsg As String = Nothing
+            If lang = "ko" Then
+                emsg = "폴더를 열 수 없습니다. 나중에 다시 시도하세요."
+            ElseIf lang = "en" Then
+                emsg = "Could not open folder. Please try again later."
+            End If
+            MsgBox(emsg, MsgBoxStyle.Exclamation, Me.Text)
+        End Try
     End Sub
     Private Sub Dotdotdot_Tick(sender As Object, e As EventArgs) Handles Dotdotdot.Tick
         If Label3.Text.Length < 8 Then
@@ -280,10 +345,6 @@ Public Class Form1
         Else
             Label3.Text = ""
         End If
-    End Sub
-
-    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
-
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
