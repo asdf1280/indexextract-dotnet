@@ -31,7 +31,7 @@ You have to install Minecraft, or you will meet **unhandled exceptions!**
 
 Issue 2. It doesn't process with json. So when minecraft json structure change even a little bit, it will not work. But i think it won't.
 
-## Get index from server
+## Getting indexes from server
 
 Versions json file: [launchermeta.mojang.com](https://launchermeta.mojang.com/mc/game/version_manifest.json)
 
