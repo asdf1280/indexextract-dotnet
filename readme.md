@@ -1,7 +1,7 @@
 # Minecraft Index Extractor - .NET Version
 (Working on .NET Framework 4.7.2+)
 
-This is an beautiful working Minecraft index extract program.
+This is a beautiful working Minecraft index extract program.
 
 If you are using this program, you can easily extract the Minecraft index.
 The index is **usually** stored in an `.minecraft/assets/indexes`. This time, it only work in this directory. Please fork my project and improve it!
