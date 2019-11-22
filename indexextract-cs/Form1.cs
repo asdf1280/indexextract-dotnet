@@ -203,16 +203,6 @@ namespace indexextract_cs {
             lang = newlang;
         }
 
-        //    Private workDataObj As WorkData = Nothing
-        //Private ad As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\.minecraft\"
-        //'Fields 2
-        //Dim ale As Integer = 0
-        //Dim abcd As Integer
-        //Public i As Integer
-        //Public index As Integer
-        //Public b As Integer
-        //Dim ncp As Integer
-        //Public lang As String
         private WorkData WorkDataObj;
         private string ad = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\.minecraft\\";
         private int ale;
@@ -223,46 +213,6 @@ namespace indexextract_cs {
         private int ncp;
 
         private void Button1_Click(object sender, EventArgs e) {
-            //    If lang = "ko" Then
-            //    Label4.Text = "준비 중"
-            //ElseIf lang = "en" Then
-            //    Label4.Text = "Prepearing"
-            //End If
-            //'If My.Computer.FileSystem.DirectoryExists("indexextract\" & Path.GetFileNameWithoutExtension(OpenFileDialog1.FileName)) Then
-            //'    Shell("cmd /c rd /Q /S " & Chr(34) & "indexextract\" & Path.GetFileNameWithoutExtension(OpenFileDialog1.FileName) & Chr(34), AppWinStyle.Hide, True)
-            //'End If
-            //abcd = UBound(Split(OpenFileDialog1.FileName, "\"))
-            //Label7.Text = "0"
-            //Label8.Text = "0"
-            //ProgressBar1.Value = 0
-            //i = 0
-            //index = 3
-            //ale = 0
-            //ncp = 0
-            //Label4.Visible = True
-            //Label3.Visible = True
-            //Label1.Visible = True
-            //Button2.Enabled = False
-            //Button1.Enabled = False
-            //Button5.Enabled = False
-            //If lang = "ko" Then
-            //    Label4.Text = "추출"
-            //ElseIf lang = "en" Then
-            //    Label4.Text = "Processing"
-            //End If
-
-            //Dim fullt As String = My.Computer.FileSystem.ReadAllText(OpenFileDialog1.FileName)
-            //b = UBound(Split(fullt, "hash")) - 1
-
-            //workDataObj = New WorkData With {
-            //    .dataJson = Split(fullt, Chr(34)),
-            //    .targetPath = ".\indexextract\" & Split(Split(OpenFileDialog1.FileName, "\")(abcd), ".json")(0)
-            //}
-
-            //    Dim t As New Thread(AddressOf WorkThread)
-            //t.Name = "Indexextract worker"
-            //t.Priority = ThreadPriority.Highest
-            //t.Start()
             if (lang == "ko")
                 Label4.Text = "준비 중";
             else if (lang == "en")
@@ -307,39 +257,6 @@ namespace indexextract_cs {
             t.Start();
         }
         private void WorkThread() {
-            //    Dim vd As New VoidDelegate(AddressOf RefreshIndexTexts)
-            //Dim cd As New ControlStrD(AddressOf SetControlIntTxt)
-            //Do
-            //    For t As Int16 = 1 To 50 Step 1
-            //        i = i + 1
-            //        Dim file As String
-            //        Dim hash As String
-            //        Try
-            //            file = workDataObj.dataJson(index)
-            //            hash = workDataObj.dataJson(index + 4)
-            //            index = index + 8
-            //        Catch ex As System.IndexOutOfRangeException
-            //            Me.Invoke(vd)
-            //            Dim ed As New VoidDelegate(AddressOf WorkEnd)
-            //            Me.Invoke(ed)
-            //            Return
-            //        End Try
-            //        Dim sourceFile As String = ad & "assets\objects\" & Microsoft.VisualBasic.Left(hash, 2) & "\" & hash
-            //        Dim targetFile As String = workDataObj.targetPath & "\" & file
-            //        If My.Computer.FileSystem.FileExists(targetFile) Then
-            //            ale += 1
-            //            Me.Invoke(cd, New ControlStr(Label7, ale))
-            //            Continue For
-            //        End If
-            //        Try
-            //            My.Computer.FileSystem.CopyFile(sourceFile, targetFile, True)
-            //        Catch ex As System.IO.FileNotFoundException
-            //            ncp += 1
-            //            Me.Invoke(cd, New ControlStr(Label8, ncp))
-            //        End Try
-            //    Next
-            //    Me.Invoke(vd)
-            //Loop
             VoidDelegate vd = new VoidDelegate(RefreshIndexTexts);
             ControlStrD cd = new ControlStrD(SetControlIntTxt);
             while (true) {
@@ -407,21 +324,6 @@ namespace indexextract_cs {
         }
 
         private void Button2_Click(object sender, EventArgs e) {
-            //    If lang = "ko" Then
-            //    OpenFileDialog1.Title = "파일 찾아보기"
-            //    Form2.Label3.Text = "파일 선택 안함."
-            //ElseIf lang = "en" Then
-            //    OpenFileDialog1.Title = "Browse File"
-            //    Form2.Label3.Text = "No file selected."
-            //End If
-            //Form2.ShowDialog()
-            //If cancel Then
-            //    Exit Sub
-            //End If
-            //Button1.Enabled = True
-            //Form2.ComboBox1.Text = ""
-            //Dim o As Integer
-            //o = UBound(Split(OpenFileDialog1.FileName, "\"))
             Form2 f2 = new Form2();
             if (lang == "ko") {
                 OpenFileDialog1.Title = "파일 찾아보기";
