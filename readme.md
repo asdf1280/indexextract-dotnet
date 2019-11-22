@@ -3,10 +3,10 @@
 
 This is a beautiful working Minecraft index extract program.
 
-If you are using this program, you can easily extract the Minecraft index.
-The index is **usually** stored in an `.minecraft/assets/indexes`. This time, it only work in this directory. Please fork my project and improve it!
+If you use this program, you can easily extract the Minecraft index.
+The index is **usually** stored in an `.minecraft/assets/indexes`. This time, it only works in this directory. You may fork my project to improve Indexextract(All helps are welcome!).
 
-You can easily extract the index would use this program.
+You can easily extract the index by using this program.
 ## How to use this software
 
 > Open the program
@@ -33,13 +33,12 @@ Issue 2. It doesn't process with json. So when minecraft json structure change e
 
 ## Getting indexes from server
 
-Versions json file: [launchermeta.mojang.com](https://launchermeta.mojang.com/mc/game/version_manifest.json)
+The version list file: [launchermeta.mojang.com](https://launchermeta.mojang.com/mc/game/version_manifest.json)
+(You may format compressed JSON files [here(jsonformatter.curiousconcept.com)](https://jsonformatter.curiousconcept.com/))
 
-Format json file: [jsonformatter.curiousconcept.com](https://jsonformatter.curiousconcept.com/)
+Minecraft resources list mapping file: `{version}.json=>assetIndex=>url`
 
-Assets json URL: `{version}.json=>assetIndex=>url`
-
-Looks like this:
+The formatted resources mapping file looks like the text below:
 ```json
 {
 
