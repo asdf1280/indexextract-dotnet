@@ -54,7 +54,7 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label2.Location = new System.Drawing.Point(153, 11);
+            this.Label2.Location = new System.Drawing.Point(131, 12);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(84, 21);
             this.Label2.TabIndex = 42;
@@ -64,7 +64,7 @@
             // 
             this.Label13.AutoSize = true;
             this.Label13.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label13.Location = new System.Drawing.Point(167, 195);
+            this.Label13.Location = new System.Drawing.Point(143, 211);
             this.Label13.Name = "Label13";
             this.Label13.Size = new System.Drawing.Size(114, 15);
             this.Label13.TabIndex = 39;
@@ -75,7 +75,7 @@
             // 
             this.Label8.AutoSize = true;
             this.Label8.Font = new System.Drawing.Font("Segoe UI Symbol", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label8.Location = new System.Drawing.Point(3, 32);
+            this.Label8.Location = new System.Drawing.Point(3, 35);
             this.Label8.Name = "Label8";
             this.Label8.Size = new System.Drawing.Size(42, 50);
             this.Label8.TabIndex = 20;
@@ -85,7 +85,7 @@
             // 
             this.Label9.AutoSize = true;
             this.Label9.Font = new System.Drawing.Font("맑은 고딕", 8.5F);
-            this.Label9.Location = new System.Drawing.Point(3, 6);
+            this.Label9.Location = new System.Drawing.Point(3, 7);
             this.Label9.Name = "Label9";
             this.Label9.Size = new System.Drawing.Size(52, 15);
             this.Label9.TabIndex = 19;
@@ -96,16 +96,16 @@
             this.Panel1.BackColor = System.Drawing.Color.Red;
             this.Panel1.Controls.Add(this.Label8);
             this.Panel1.Controls.Add(this.Label9);
-            this.Panel1.Location = new System.Drawing.Point(157, 87);
+            this.Panel1.Location = new System.Drawing.Point(135, 94);
             this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(135, 95);
+            this.Panel1.Size = new System.Drawing.Size(116, 103);
             this.Panel1.TabIndex = 38;
             // 
             // Label7
             // 
             this.Label7.AutoSize = true;
             this.Label7.Font = new System.Drawing.Font("Segoe UI Symbol", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label7.Location = new System.Drawing.Point(3, 32);
+            this.Label7.Location = new System.Drawing.Point(3, 35);
             this.Label7.Name = "Label7";
             this.Label7.Size = new System.Drawing.Size(42, 50);
             this.Label7.TabIndex = 20;
@@ -115,7 +115,7 @@
             // 
             this.Label6.AutoSize = true;
             this.Label6.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
-            this.Label6.Location = new System.Drawing.Point(3, 6);
+            this.Label6.Location = new System.Drawing.Point(3, 7);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(54, 13);
             this.Label6.TabIndex = 19;
@@ -126,18 +126,18 @@
             this.Panel2.BackColor = System.Drawing.Color.Gold;
             this.Panel2.Controls.Add(this.Label7);
             this.Panel2.Controls.Add(this.Label6);
-            this.Panel2.Location = new System.Drawing.Point(298, 87);
+            this.Panel2.Location = new System.Drawing.Point(255, 94);
             this.Panel2.Name = "Panel2";
-            this.Panel2.Size = new System.Drawing.Size(135, 95);
+            this.Panel2.Size = new System.Drawing.Size(116, 103);
             this.Panel2.TabIndex = 37;
             // 
             // Label1
             // 
             this.Label1.BackColor = System.Drawing.Color.Transparent;
             this.Label1.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(10, 48);
+            this.Label1.Location = new System.Drawing.Point(9, 52);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(120, 29);
+            this.Label1.Size = new System.Drawing.Size(103, 31);
             this.Label1.TabIndex = 10;
             this.Label1.Text = "0%";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -145,19 +145,19 @@
             // 
             // ProgressBar1
             // 
-            this.ProgressBar1.Location = new System.Drawing.Point(157, 41);
+            this.ProgressBar1.Location = new System.Drawing.Point(135, 44);
             this.ProgressBar1.MarqueeAnimationSpeed = 10;
             this.ProgressBar1.Maximum = 10000;
             this.ProgressBar1.Name = "ProgressBar1";
-            this.ProgressBar1.Size = new System.Drawing.Size(276, 40);
+            this.ProgressBar1.Size = new System.Drawing.Size(237, 43);
             this.ProgressBar1.TabIndex = 41;
             // 
             // Button7
             // 
             this.Button7.Font = new System.Drawing.Font("Segoe UI Symbol", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button7.Location = new System.Drawing.Point(328, 191);
+            this.Button7.Location = new System.Drawing.Point(281, 207);
             this.Button7.Name = "Button7";
-            this.Button7.Size = new System.Drawing.Size(105, 23);
+            this.Button7.Size = new System.Drawing.Size(90, 25);
             this.Button7.TabIndex = 40;
             this.Button7.Text = "Update";
             this.Button7.UseVisualStyleBackColor = true;
@@ -169,18 +169,18 @@
             this.nowt.Controls.Add(this.Label4);
             this.nowt.Controls.Add(this.Label1);
             this.nowt.Controls.Add(this.Label3);
-            this.nowt.Location = new System.Drawing.Point(8, 87);
+            this.nowt.Location = new System.Drawing.Point(7, 94);
             this.nowt.Name = "nowt";
-            this.nowt.Size = new System.Drawing.Size(138, 98);
+            this.nowt.Size = new System.Drawing.Size(118, 106);
             this.nowt.TabIndex = 36;
             // 
             // Label4
             // 
             this.Label4.BackColor = System.Drawing.Color.Transparent;
             this.Label4.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(10, -4);
+            this.Label4.Location = new System.Drawing.Point(9, -4);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(120, 57);
+            this.Label4.Size = new System.Drawing.Size(103, 62);
             this.Label4.TabIndex = 10;
             this.Label4.Text = "Extract\r\nprogress : ";
             this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -189,9 +189,9 @@
             // 
             this.Label3.BackColor = System.Drawing.Color.Transparent;
             this.Label3.Font = new System.Drawing.Font("맑은 고딕", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Label3.Location = new System.Drawing.Point(17, 60);
+            this.Label3.Location = new System.Drawing.Point(15, 65);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(103, 35);
+            this.Label3.Size = new System.Drawing.Size(88, 38);
             this.Label3.TabIndex = 9;
             this.Label3.Text = "......";
             this.Label3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -210,9 +210,9 @@
             this.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button5.Font = new System.Drawing.Font("바탕", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Button5.ForeColor = System.Drawing.Color.Black;
-            this.Button5.Location = new System.Drawing.Point(9, 41);
+            this.Button5.Location = new System.Drawing.Point(8, 44);
             this.Button5.Name = "Button5";
-            this.Button5.Size = new System.Drawing.Size(137, 40);
+            this.Button5.Size = new System.Drawing.Size(117, 43);
             this.Button5.TabIndex = 35;
             this.Button5.Text = "Open";
             this.Button5.UseVisualStyleBackColor = false;
@@ -222,9 +222,9 @@
             // 
             this.Button4.BackColor = System.Drawing.Color.Transparent;
             this.Button4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Button4.Location = new System.Drawing.Point(9, 191);
+            this.Button4.Location = new System.Drawing.Point(8, 207);
             this.Button4.Name = "Button4";
-            this.Button4.Size = new System.Drawing.Size(52, 23);
+            this.Button4.Size = new System.Drawing.Size(45, 25);
             this.Button4.TabIndex = 34;
             this.Button4.Text = "한국어";
             this.Button4.UseVisualStyleBackColor = false;
@@ -234,9 +234,9 @@
             // 
             this.Button3.BackColor = System.Drawing.Color.Transparent;
             this.Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button3.Location = new System.Drawing.Point(66, 191);
+            this.Button3.Location = new System.Drawing.Point(57, 207);
             this.Button3.Name = "Button3";
-            this.Button3.Size = new System.Drawing.Size(80, 23);
+            this.Button3.Size = new System.Drawing.Size(69, 25);
             this.Button3.TabIndex = 33;
             this.Button3.Text = "English";
             this.Button3.UseVisualStyleBackColor = false;
@@ -253,9 +253,9 @@
             // 
             this.Button2.BackColor = System.Drawing.Color.Transparent;
             this.Button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Button2.Location = new System.Drawing.Point(8, 12);
+            this.Button2.Location = new System.Drawing.Point(7, 13);
             this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(72, 23);
+            this.Button2.Size = new System.Drawing.Size(62, 25);
             this.Button2.TabIndex = 32;
             this.Button2.Text = "Browse";
             this.Button2.UseVisualStyleBackColor = false;
@@ -266,9 +266,9 @@
             this.Button1.BackColor = System.Drawing.Color.Transparent;
             this.Button1.Enabled = false;
             this.Button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Button1.Location = new System.Drawing.Point(86, 12);
+            this.Button1.Location = new System.Drawing.Point(74, 13);
             this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(60, 23);
+            this.Button1.Size = new System.Drawing.Size(51, 25);
             this.Button1.TabIndex = 31;
             this.Button1.Text = "Start";
             this.Button1.UseVisualStyleBackColor = false;
@@ -276,9 +276,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 224);
+            this.ClientSize = new System.Drawing.Size(378, 243);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label13);
             this.Controls.Add(this.Panel1);
@@ -293,7 +293,7 @@
             this.Controls.Add(this.Button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
-            this.Text = "Index Extractor 19.11e0";
+            this.Text = "Index Extractor 20.04e0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();

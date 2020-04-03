@@ -12,7 +12,7 @@ namespace indexextract_cs
         {
             InitializeComponent();
         }
-        private string[] sp = { "legacy.json", "1.7.10.json", "1.8.json", "1.9.json", "1.9-aprilfools.json", "1.10.json", "1.11.json", "1.12.json", "1.13.json", "1.13.1.json", "1.14.json", "1.14-af.json", "1.15.json", "pre-1.6.json" };
+        private string[] sp = { "legacy.json", "pre-1.6.json", "1.7.10.json", "1.8.json", "1.9.json", "1.9-aprilfools.json", "1.10.json", "1.11.json", "1.12.json", "1.13.json", "1.13.1.json", "1.14.json", "1.14-af.json", "1.15.json", "1.16.json" };
         public void Fds()
         {
             ComboBox1.Items.Clear();

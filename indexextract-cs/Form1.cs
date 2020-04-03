@@ -43,7 +43,7 @@ namespace indexextract_cs {
             public ControlBool(Control c, bool b) {
                 this.c = c;
                 this.b = b;
-            }
+           }
         }
         private struct ControlStr {
             public Control c;
