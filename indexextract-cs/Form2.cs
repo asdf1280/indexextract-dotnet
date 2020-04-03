@@ -12,7 +12,6 @@ namespace indexextract_cs
         {
             InitializeComponent();
         }
-        private string[] sp = { "legacy.json", "pre-1.6.json", "1.7.10.json", "1.8.json", "1.9.json", "1.9-aprilfools.json", "1.10.json", "1.11.json", "1.12.json", "1.13.json", "1.13.1.json", "1.14.json", "1.14-af.json", "1.15.json", "1.16.json" };
         public void Fds()
         {
             ComboBox1.Items.Clear();
@@ -20,8 +19,7 @@ namespace indexextract_cs
             {
                 string[] its = Strings.Split(foundFile, "\\");
                 string it = its[its.Length - 1];
-                if (Array.IndexOf(sp, it) != -1)
-                    ComboBox1.Items.Add(it);
+                ComboBox1.Items.Add(it);
             }
         }
         private OpenFileDialog OpenFileDialog;
@@ -40,25 +38,7 @@ namespace indexextract_cs
                 int lastIdx;
                 string[] fns = Strings.Split(OpenFileDialog.FileName, "\\");
                 lastIdx = fns.Length - 1;
-                if (Array.IndexOf(sp, fns[lastIdx]) == -1)
-                {
-                    DialogResult? ad = null;
-                    Console.Beep();
-                    if (lang == "ko")
-                    {
-                        ad = MessageBox.Show("지정된 파일만 열 수 있습니다.\n허가된 파일 목록을 확인하려면 '확인'을 클릭하십시오.", "Indexextract", MessageBoxButtons.OKCancel);
-                    }
-                    else if (lang == "en")
-                    {
-                        ad = MessageBox.Show("Incompatible version. Press OK to see list of compatible versions.", "Indexextract", MessageBoxButtons.OKCancel);
-                    }
-                    if (ad == DialogResult.OK)
-                    {
-                        Process.Start("https://github.com/dhkim0800/indexextract/wiki/%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EB%B2%84%EC%A0%84");
-                    }
-                }
-                else
-                    Label3.Text = OpenFileDialog.FileName;
+                Label3.Text = OpenFileDialog.FileName;
             }
         }
         public string lang;
@@ -123,25 +103,7 @@ namespace indexextract_cs
         private void ComboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             string fn = ComboBox1.Text;
-            if (Array.IndexOf(sp, fn) == -1)
-            {
-                DialogResult? ad = null;
-                Console.Beep();
-                if (lang == "ko")
-                {
-                    ad = MessageBox.Show("지정된 파일만 열 수 있습니다.\n허가된 파일 목록을 확인하려면 '확인'을 클릭하십시오.", "Indexextract", MessageBoxButtons.OKCancel);
-                }
-                else if (lang == "en")
-                {
-                    ad = MessageBox.Show("Incompatible version. Press OK to see list of compatible versions.", "Indexextract", MessageBoxButtons.OKCancel);
-                }
-                if (ad == DialogResult.OK)
-                {
-                    Process.Start("https://github.com/dhkim0800/indexextract/wiki/%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EB%B2%84%EC%A0%84");
-                }
-            }
-            else
-                Label3.Text = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\.minecraft\\assets\\indexes\\" + fn;
+            Label3.Text = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\.minecraft\\assets\\indexes\\" + fn;
         }
 
         private void Button4_Click(object sender, EventArgs e)
@@ -165,15 +127,7 @@ namespace indexextract_cs
             int lastIdx;
             string[] fns = Strings.Split(Label3.Text, "\\");
             lastIdx = fns.Length - 1;
-            //            if (!sp.Contains(fns[lastIdx])) {
-            if (!FileSystem.FileExists(Label3.Text) || Array.IndexOf(sp, fns[lastIdx]) == -1)
-            {
-                Button3.Enabled = false;
-            }
-            else
-            {
-                Button3.Enabled = true;
-            }
+            Button3.Enabled = true;
         }
     }
 }
