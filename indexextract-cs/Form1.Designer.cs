@@ -293,7 +293,7 @@
             this.Controls.Add(this.Button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
-            this.Text = "Index Extractor 20.04e0";
+            this.Text = "Index Extractor 20.04e1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();
